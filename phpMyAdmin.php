@@ -13,7 +13,6 @@ if ($conn->connect_error) {
 }
 
 
-
 // SQL query to select all data from the users table
 /*$sql = "SELECT id, name, email FROM users";
 $result = $conn->query($sql);
