@@ -88,8 +88,41 @@
                         <th>Tempo Total Etapas</th>
                     </tr>
                 </thead>
-                <tbody id="classificacaoBody">
-                    <!-- Linhas da tabela serão adicionadas aqui pelo JavaScript -->
+                <tbody>
+                    <?php
+                    // Database connection
+                    $servername = 'ave.dee.isep.ipp.pt';
+                    $username = '1201034';
+                    $dbpassword = 'MWY2MzMxMDdiMWQ2';
+                    $dbname = '1201034';
+
+                    $conn = new mysqli($servername, $username, $dbpassword, $dbname);
+
+                    // Verifica a conexão
+                    if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                    }
+
+                    $sql = "SELECT * FROM Classificação_Geral";
+                    $result = $conn->query($sql);
+
+                    if (!$result) {
+                        die("Invalid query: " . $conn->error);
+                    }
+
+                    //Read data of each row
+                    while($row = $result->fetch_assoc()){
+                        echo "<tr>
+                            <td>" . $row["id"] . "</td>
+                            <td>" . $row["Posição"] . "</td>
+                            <td>" . $row["Atleta"] . "</td>
+                            <td>" . $row["Tempo_Total_Etapas"] . "</td>
+                        </tr>";
+                    }
+                    //Colocar na base de dados na secção SQL por exemplo: INSERT INTO `Classificação_Geral` (Posição, Atleta, Tempo_Total_Etapas, Etapas) VALUES ('1', 'Zerafim', '23:39:29', 'etapa_value');
+
+                    ?>
+                    
                 </tbody>
             </table>
         </div>
@@ -100,45 +133,6 @@
             style="width: 20px; height: 12px; left: 38px; top: 33px; position: absolute; transform: rotate(-180deg); transform-origin: 0 0"
             src="Fotos/Arrow Vector 0.png" />
     </div>
-    <script>
-        // Dados exemplo
-        const data = [
-            { id: 1, posicao: 1, nome: 'Ciclista A', tempo: '20:00:00' },
-            { id: 2, posicao: 2, nome: 'Ciclista B', tempo: '20:05:00' },
-            { id: 3, posicao: 3, nome: 'Ciclista C', tempo: '20:10:00' },
-            { id: 4, posicao: 4, nome: 'Ciclista D', tempo: '20:15:00' }
-        ];
 
-        // Função para preencher a tabela com os dados
-        function preencherTabela(dados) {
-            const tbody = document.getElementById('classificacaoBody');
-            tbody.innerHTML = ''; // Limpa a tabela antes de preenchê-la
-            dados.forEach(item => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td>${item.id}</td>
-                    <td>${item.posicao}</td>
-                    <td>${item.nome}</td>
-                    <td>${item.tempo}</td>
-                `;
-                tbody.appendChild(tr);
-            });
-        }
-
-        // Preencher a tabela ao carregar a página
-        document.addEventListener('DOMContentLoaded', () => preencherTabela(data));
-
-        // Função para adicionar novos dados à tabela
-        function adicionarNovosDados() {
-            const novosDados = [
-                { id: 5, posicao: 5, nome: 'Ciclista E', tempo: '20:20:00' },
-                { id: 6, posicao: 6, nome: 'Ciclista F', tempo: '20:25:00' }
-            ];
-            preencherTabela(novosDados);
-        }
-
-        // Exemplo de chamada para adicionar novos dados após 5 segundos
-        setTimeout(adicionarNovosDados, 5000);
-    </script>
 </body>
 </html>
