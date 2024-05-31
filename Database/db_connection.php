@@ -1,5 +1,5 @@
 <?php
-    $servername = "ave.dee.isep.ipp.pt";  // Usually 'localhost'
+    $servername = "ave.dee.isep.ipp.pt";
     $username = "1201034";  // Your database username
     $password = "MWY2MzMxMDdiMWQ2";  // Your database password
     $dbname = "1201034";  // The database name

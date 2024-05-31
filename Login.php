@@ -23,18 +23,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($conn->connect_error) {
         die("Connection Failed : " . $conn->connect_error);
     } else {
-        $stmt = $conn->prepare("INSERT INTO registration (email, password) VALUES (?, ?)");
+        // Consulta SQL para verificar o usuário
+        $stmt = $conn->prepare("SELECT * FROM registration_sign_up WHERE email_sign_up = ?");
         if ($stmt === false) {
             die("Prepare failed: " . $conn->error);
         }
 
-        $stmt->bind_param("ss", $email, $password);
-        $execval = $stmt->execute();
+        $stmt->bind_param("s", $email);  // Sincroniza o email ao parâmetro na consulta
+        $stmt->execute();                // Executa a consulta
+        $result = $stmt->get_result();   // Obtém o resultado da consulta
 
-        if ($execval) {
-            echo "Registo efetuado com sucesso";
+        if ($result->num_rows > 0) {
+            // Usuário encontrado, verificar senha
+            $row = $result->fetch_assoc();  // Obtém os dados do usuário
+            if ($password === $row['password_sign_up']) { // Verifica a senha
+                //echo "<script>alert('Login efetuado com sucesso'); window.location.href = 'Interface Inicial.html'</script>";
+                echo "<script>window.location.href = 'Interface Inicial.html'</script>";
+            } else {
+                echo "<script>alert('Senha incorreta!'); window.location.href = 'Login.html'</script>";
+            }
         } else {
-            echo "Falha no registo: " . $stmt->error;
+            echo "<script>alert('Utilizador não encontrado!'); window.location.href = 'Login.html'</script>";
         }
 
         $stmt->close();
