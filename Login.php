@@ -37,7 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Usuário encontrado, verificar senha
             $row = $result->fetch_assoc();  // Obtém os dados do usuário
             if ($password === $row['password_sign_up']) { // Verifica a senha
-                //echo "<script>alert('Login efetuado com sucesso'); window.location.href = 'Interface Inicial.html'</script>";
                 echo "<script>window.location.href = 'Interface Inicial.html'</script>";
             } else {
                 echo "<script>alert('Senha incorreta!'); window.location.href = 'Login.html'</script>";
@@ -48,6 +47,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $stmt->close();
         $conn->close();
+
+        //Comentario random
     }
 }
 ?>
