@@ -126,13 +126,15 @@
                 </tbody>
             </table>
         </div>
-        <div class="ArrowCircle"
-            style="width: 34px; height: 34px; left: 11px; top: 10px; position: absolute; background: black; border-radius: 9999px">
-        </div>
-        <img class="ArrowVector3"
-            style="width: 20px; height: 12px; left: 38px; top: 33px; position: absolute; transform: rotate(-180deg); transform-origin: 0 0"
-            src="Fotos/Arrow Vector 0.png" />
-    </div>
+        <a href="Interface Inicial.html" style="text-decoration: none;">
+            <div class="ArrowCircle"
+                style="width: 34px; height: 34px; left: 11px; top: 10px; position: absolute; background: black; border-radius: 9999px">
+            </div>
+            <img class="ArrowVector3"
+                style="width: 20px; height: 12px; left: 38px; top: 33px; position: absolute; transform: rotate(-180deg); transform-origin: 0 0"
+                src="Fotos/Arrow Vector 0.png" />
+            </div>
+        </a>
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-<?php
+    <?php
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -13,6 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Nome, email e password são obrigatórios!";
         exit;
     }
+
+    $hashed_password = password_hash($password_sign_up, PASSWORD_DEFAULT);
 
     // Database connection
     $servername = 'ave.dee.isep.ipp.pt';
@@ -29,11 +31,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             die("Prepare failed: " . $conn->error);
         }
 
-        $stmt->bind_param("sss", $name_sign_up, $email_sign_up, $password_sign_up); //sss é o número de parâmetros
+        $stmt->bind_param("sss", $name_sign_up, $email_sign_up, $hashed_password); //sss é o número de parâmetros
         $execval = $stmt->execute();
 
         if ($execval) {
-            echo "Registo efetuado com sucesso";
+            echo "<script>window.location.href = 'Interface Inicial.html'</script>";
         } else {
             echo "Falha no registo: " . $stmt->error;
         }

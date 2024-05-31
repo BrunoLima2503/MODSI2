@@ -3,6 +3,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+session_start(); // Inicia a sessão
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -33,10 +35,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute();                // Executa a consulta
         $result = $stmt->get_result();   // Obtém o resultado da consulta
 
+        
         if ($result->num_rows > 0) {
             // Usuário encontrado, verificar senha
             $row = $result->fetch_assoc();  // Obtém os dados do usuário
-            if ($password === $row['password_sign_up']) { // Verifica a senha
+            $stored_password = $row['password_sign_up'];
+            if (password_verify($password, $stored_password)) { // Verifica a senha
+                $_SESSION['loggedin'] = true;
+                $_SESSION['email'] = $email;
                 echo "<script>window.location.href = 'Interface Inicial.html'</script>";
             } else {
                 echo "<script>alert('Senha incorreta!'); window.location.href = 'Login.html'</script>";
@@ -47,8 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $stmt->close();
         $conn->close();
-
-        //Comentario random
     }
 }
 ?>
+

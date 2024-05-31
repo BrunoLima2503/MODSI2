@@ -1,3 +1,16 @@
+<?php
+session_start(); // Inicia a sessão
+
+// Verifica se o usuário está logado
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    echo "<script>alert('Acesso negado. Faça login para continuar.'); window.location.href = 'Login.html';</script>";
+    exit;
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<body>
 <div class="Section16" style="width: 360px; height: 800px; background: #032383">
     <img class="Z3snnqskliwpnwjflqrqmsql2"
         style="width: 360px; height: 143px; left: 0px; top: 0px; position: absolute; opacity: 0.80"
@@ -59,3 +72,10 @@
             src="Fotos/Arrow Vector 0.png" />
         </div>
     </a>
+
+
+
+    
+    <a href="logout.php">Logout</a> 
+</body>
+</html>
