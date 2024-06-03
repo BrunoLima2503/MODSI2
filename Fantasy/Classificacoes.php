@@ -64,7 +64,7 @@
                 }
 
 
-                $sql = "SELECT * FROM Atleta"; //INSERT INTO `Lista_de_Saída` (Posição, Atleta, Equipa) VALUES ('1', 'Xavi', 'Nome da equipa');
+                $sql = "SELECT * FROM Atleta";
 
                 $result = $conn->query($sql);
 

@@ -110,6 +110,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Inicializa os créditos
     let creditos = 3000;
+    let n_players = 0;
     const creditosElement = document.getElementById("creditos");
 
     // Seleciona todas as linhas da tabela, exceto o cabeçalho
@@ -120,9 +121,11 @@ document.addEventListener("DOMContentLoaded", function() {
         row.addEventListener("click", function() {
             const firstCell = row.cells[0]; // Seleciona a primeira célula da linha
             const creditosCell = parseFloat(row.cells[2].innerText); // Obtém o valor dos créditos
+            
 
             // Verifica se a célula já está sublinhada
             if (row.style.textDecoration === "underline") {
+                n_players-=1;
                 // Remove o sublinhado
                 row.style.textDecoration = "";
                 // Adiciona os créditos de volta
@@ -130,16 +133,21 @@ document.addEventListener("DOMContentLoaded", function() {
             } else {
                 // Subtrai os créditos
                 creditos -= creditosCell;
-                if (creditos<0)
-                {
+                n_players += 1;
+                if(n_players>5){
+                    n_players -= 1;
+                    creditos += creditosCell;
+                    alert("Não é permitido selecionar mais do que 5 ciclistas!");
+                }
+                else if (creditos<0){
                     creditos += creditosCell;
                     alert("Número de créditos excedidos!");
                 }
                 else
                     // Sublinha a célula
                     row.style.textDecoration = "underline";
-                
-            }
+            } 
+
 
             // Atualiza o texto dos créditos
             creditosElement.innerText = `Créditos: ${creditos}`;
