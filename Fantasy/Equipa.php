@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const creditosElement = document.getElementById("creditos");
 
     // Seleciona todas as linhas da tabela, exceto o cabeçalho
-    const rows = document.querySelectorAll("#ciclistaTable tbody tr");
+    const rows = document.querySelectorAll("#ciclistasTable tbody tr");
 
     // Adiciona um evento de clique para cada linha
     rows.forEach(row => {
@@ -122,16 +122,23 @@ document.addEventListener("DOMContentLoaded", function() {
             const creditosCell = parseFloat(row.cells[2].innerText); // Obtém o valor dos créditos
 
             // Verifica se a célula já está sublinhada
-            if (firstCell.style.textDecoration === "underline") {
+            if (row.style.textDecoration === "underline") {
                 // Remove o sublinhado
-                firstCell.style.textDecoration = "";
+                row.style.textDecoration = "";
                 // Adiciona os créditos de volta
                 creditos += creditosCell;
             } else {
-                // Sublinha a célula
-                firstCell.style.textDecoration = "underline";
                 // Subtrai os créditos
                 creditos -= creditosCell;
+                if (creditos<0)
+                {
+                    creditos += creditosCell;
+                    alert("Número de créditos excedidos!");
+                }
+                else
+                    // Sublinha a célula
+                    row.style.textDecoration = "underline";
+                
             }
 
             // Atualiza o texto dos créditos

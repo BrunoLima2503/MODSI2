@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Classificação fantasy</title>
+    <title>Classificação Fantasy</title>
     <style>
         .Rectangle9 {
             width: 330px;
@@ -75,9 +75,9 @@
                     //Read data of each row
                     while($row = $result->fetch_assoc()){
                         echo "<tr>
-                            <td>" . $row["Nome"] . "</td>
-                            <td>" . $row["Equipa"] . "</td>
-                            <td>" . $row["Créditos"] . "</td>
+                            <td>" . $row["Posição"] . "</td>
+                            <td>" . $row["Utilizador"] . "</td>
+                            <td>" . $row["Pontos"] . "</td>
                         </tr>";
                     }
                 ?>         
