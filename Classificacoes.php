@@ -31,7 +31,7 @@
     </style>
 </head>
 <body>
-    <div class="Section15" style="width: 360px; height: 800px; background: #032383">
+    <div class="Section15" style="width: 360px; height: 800px; background: #032383; position: relative;">
         <div class="Rectangle10"
             style="width: 360px; height: 42px; left: 0px; top: 143px; position: absolute; background: #D9D9D9"></div>
         <img class="Z3snnqskliwpnwjflqrqmsql2"
@@ -62,19 +62,19 @@
         <div class="Rectangle10"
             style="width: 360px; height: 39px; left: 0px; top: 228px; position: absolute; background: #D9D9D9"></div>
         <div class="Frame8" style="width: 630px; height: 22px; left: -56px; top: 238px; position: absolute">
-            <div class="Etapa1"
+            <div class="Etapa1" id="Etapa1" onclick="showStage(1)"
                 style="width: 184px; height: 38px; left: 0px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
                 Etapa 1</div>
-            <div class="Etapa2"
+            <div class="Etapa2" id="Etapa2" onclick="showStage(2)"
                 style="width: 184px; height: 38px; left: 71px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
                 Etapa 2</div>
-            <div class="Etapa3"
+            <div class="Etapa3" id="Etapa3" onclick="showStage(3)"
                 style="width: 184px; height: 38px; left: 142px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
                 Etapa 3</div>
-            <div class="Etapa5"
+            <div class="Etapa5" id="Etapa5" onclick="showStage(5)"
                 style="width: 184px; height: 38px; left: 284px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
                 Etapa 5</div>
-            <div class="Etapa4"
+            <div class="Etapa4" id="Etapa4" onclick="showStage(4)"
                 style="width: 184px; height: 38px; left: 213px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
                 Etapa 4</div>
         </div>
@@ -82,7 +82,6 @@
             <table>
                 <thead>
                     <tr>
-                        <th>id</th>
                         <th>Posição</th>
                         <th>Nome do Ciclista</th>
                         <th>Tempo Total Etapas</th>
@@ -103,24 +102,66 @@
                         die("Connection failed: " . $conn->connect_error);
                     }
 
-                    $sql = "SELECT * FROM Classificação_Geral";
-                    $result = $conn->query($sql);
+                        $sql = "SELECT * FROM Etapa_1"; 
+                        $result = $conn->query($sql);
 
-                    if (!$result) {
-                        die("Invalid query: " . $conn->error);
-                    }
+                        if (!$result) {
+                            die("Invalid query: " . $conn->error);
+                        }
 
-                    //Read data of each row
-                    while($row = $result->fetch_assoc()){
-                        echo "<tr>
-                            <td>" . $row["id"] . "</td>
-                            <td>" . $row["Posição"] . "</td>
-                            <td>" . $row["Atleta"] . "</td>
-                            <td>" . $row["Tempo_Total_Etapas"] . "</td>
-                        </tr>";
-                    }
-                    //Colocar na base de dados na secção SQL por exemplo: INSERT INTO `Classificação_Geral` (Posição, Atleta, Tempo_Total_Etapas, Etapas) VALUES ('1', 'Zerafim', '23:39:29', 'etapa_value');
+                        //Read data of each row
+                        while($row = $result->fetch_assoc()){
+                            echo "<tr>
+                                <td>" . $row["Posição_Etapa_1"] . "</td>
+                                <td>" . $row["Atleta"] . "</td>
+                                <td>" . $row["Tempo"] . "</td>
+                            </tr>";
+                        }
 
+                        $conn->close();
+                        exit();
+                        //Colocar na base de dados na secção SQL por exemplo: INSERT INTO `Classificação_Geral` (Posição, Atleta, Tempo_Total_Etapas, Etapas) VALUES ('1', 'Zerafim', '23:39:29', 'etapa_value');
+                    
+                        $sql = "SELECT * FROM Etapa_2"; 
+                        $result = $conn->query($sql);
+
+                        if (!$result) {
+                            die("Invalid query: " . $conn->error);
+                        }
+
+                        //Read data of each row
+                        while($row = $result->fetch_assoc()){
+                            echo "<tr>
+                                <td>" . $row["Posição_Etapa_1"] . "</td>
+                                <td>" . $row["Atleta"] . "</td>
+                                <td>" . $row["Tempo"] . "</td>
+                            </tr>";
+                        }
+
+                        $conn->close();
+                        exit();
+                        //Colocar na base de dados na secção SQL por exemplo: INSERT INTO `Classificação_Geral` (Posição, Atleta, Tempo_Total_Etapas, Etapas) VALUES ('1', 'Zerafim', '23:39:29', 'etapa_value');
+                    
+
+                    
+                        // Código para exibir a classificação geral padrão
+                        $sql = "SELECT * FROM Classificação_Geral";
+                        $result = $conn->query($sql);
+                    
+                        if (!$result) {
+                            die("Invalid query: " . $conn->error);
+                        }
+                    
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>
+                                    <td>" . $row["Posição"] . "</td>
+                                    <td>" . $row["Atleta"] . "</td>
+                                    <td>" . $row["Tempo_Total_Etapas"] . "</td>
+                                  </tr>";
+                        }
+                        $conn->close();
+                    
+                    
                     ?>
                     
                 </tbody>
@@ -135,6 +176,7 @@
                 src="Fotos/Arrow Vector 0.png" />
             </div>
         </a>
+
 
 </body>
 </html>

@@ -21,7 +21,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <div class="Rectangle7"
         style="width: 132px; height: 148px; left: 114px; top: 238px; position: absolute; background: #D9D9D9; border-radius: 23px">
     </div>
-    <a href="Fantasy/Equipa.html" style="text-decoration: none;">
+    <a href="Fantasy/Equipa.php" style="text-decoration: none;">
         <div class="EscolheATuaEquipa"
             style="width: 86px; height: 43px; left: 138px; top: 293px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-weight: 500; word-wrap: break-word">
             Escolhe a tua equipa</div>

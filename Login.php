@@ -34,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("s", $email);  // Sincroniza o email ao parâmetro na consulta
         $stmt->execute();                // Executa a consulta
         $result = $stmt->get_result();   // Obtém o resultado da consulta
+       
 
         
         if ($result->num_rows > 0) {

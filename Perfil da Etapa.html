@@ -1,38 +1,80 @@
-<div class="Section19" style="width: 360px; height: 800px; background: #032383">
-    <img class="Z3snnqskliwpnwjflqrqmsql2"
-        style="width: 360px; height: 143px; left: 0px; top: 0px; position: absolute; opacity: 0.80"
-        src="Fotos/Banner.png" />
-    <div class="PerfilDaEtapa"
-        style="width: 361px; height: 17px; left: 0px; top: 111px; position: absolute; text-align: center; color: white; font-size: 24px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
-        Perfil da Etapa</div>
-    <div class="Rectangle10"
-        style="width: 360px; height: 39px; left: 0px; top: 143px; position: absolute; background: #D9D9D9"></div>
-    <div class="Frame9" style="width: 630px; height: 22px; left: -56px; top: 153px; position: absolute">
-        <div class="Etapa1"
-            style="width: 184px; height: 38px; left: 0px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
-            Etapa 1</div>
-        <div class="Etapa2"
-            style="width: 184px; height: 38px; left: 71px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
-            Etapa 2</div>
-        <div class="Etapa3"
-            style="width: 184px; height: 38px; left: 142px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
-            Etapa 3</div>
-        <div class="Etapa5"
-            style="width: 184px; height: 38px; left: 284px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
-            Etapa 5</div>
-        <div class="Etapa4"
-            style="width: 184px; height: 38px; left: 213px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
-            Etapa 4</div>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .Rectangle9 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        function showImage(step) {
+            const images = document.querySelectorAll('.Rectangle9 img');
+            images.forEach(img => img.classList.add('hidden'));
+            document.getElementById(`image${step}`).classList.remove('hidden');
+        }
+    </script>
+</head>
+<body>
+    <div class="Section19" style="width: 360px; height: 800px; background: #032383; position: relative;">
+        <img class="Z3snnqskliwpnwjflqrqmsql2"
+            style="width: 360px; height: 143px; left: 0px; top: 0px; position: absolute; opacity: 0.80"
+            src="Fotos/Banner.png" />
+        <div class="PerfilDaEtapa"
+            style="width: 361px; height: 17px; left: 0px; top: 111px; position: absolute; text-align: center; color: white; font-size: 24px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
+            Perfil da Etapa
+        </div>
+        <div class="Rectangle10"
+            style="width: 360px; height: 39px; left: 0px; top: 143px; position: absolute; background: #D9D9D9"></div>
+        <div class="Frame9" style="width: 630px; height: 22px; left: -56px; top: 153px; position: absolute">
+            <div class="Etapa1"
+                style="width: 184px; height: 38px; left: 0px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word"
+                onclick="showImage(1)">
+                Etapa 1
+            </div>
+            <div class="Etapa2"
+                style="width: 184px; height: 38px; left: 71px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word"
+                onclick="showImage(2)">
+                Etapa 2
+            </div>
+            <div class="Etapa3"
+                style="width: 184px; height: 38px; left: 142px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word"
+                onclick="showImage(3)">
+                Etapa 3
+            </div>
+            <div class="Etapa4"
+                style="width: 184px; height: 38px; left: 213px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word"
+                onclick="showImage(4)">
+                Etapa 4
+            </div>
+            <div class="Etapa5"
+                style="width: 184px; height: 38px; left: 284px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word"
+                onclick="showImage(5)">
+                Etapa 5
+            </div>
+
+        </div>
+        <div class="Rectangle9" style="width: 330px; height: 583px; left: 15px; top: 196px; position: absolute; background: #D9D9D9; display: flex; justify-content: center; align-items: center;">
+            <img id="image1" src="perfil_etapas/imagem_perfil_etapa1.jpg" alt="Imagem 1" class="hidden" style="max-width: 100%; max-height: 100%;" />
+            <img id="image2" src="perfil_etapas/imagem_perfil_etapa2.jpg" alt="Imagem 2" class="hidden" style="max-width: 100%; max-height: 100%;" />
+            <img id="image3" src="perfil_etapas/imagem_perfil_etapa3.jpg" alt="Imagem 3" class="hidden" style="max-width: 100%; max-height: 100%;" />
+            <img id="image4" src="perfil_etapas/imagem_perfil_etapa4.jpg" alt="Imagem 4" class="hidden" style="max-width: 100%; max-height: 100%;" />
+            <img id="image5" src="perfil_etapas/imagem_perfil_etapa5.jpg" alt="Imagem 5" class="hidden" style="max-width: 100%; max-height: 100%;" />
+        </div>
+        <a href="Interface Inicial.html" style="text-decoration: none;">
+            <div class="ArrowCircle"
+                style="width: 34px; height: 34px; left: 11px; top: 10px; position: absolute; background: black; border-radius: 9999px">
+            </div>
+            <img class="ArrowVector3"
+                style="width: 20px; height: 12px; left: 38px; top: 33px; position: absolute; transform: rotate(-180deg); transform-origin: 0 0"
+                src="Fotos/Arrow Vector 0.png" />
+        </a>
     </div>
-    <div class="Rectangle9"
-        style="width: 330px; height: 583px; left: 15px; top: 196px; position: absolute; background: #D9D9D9"></div>
-    
-    <a href="Interface Inicial.html" style="text-decoration: none;">
-        <div class="ArrowCircle"
-            style="width: 34px; height: 34px; left: 11px; top: 10px; position: absolute; background: black; border-radius: 9999px">
-        </div>
-        <img class="ArrowVector3"
-            style="width: 20px; height: 12px; left: 38px; top: 33px; position: absolute; transform: rotate(-180deg); transform-origin: 0 0"
-            src="Fotos/Arrow Vector 0.png" />
-        </div>
-    </a>
+</body>
+</html>
