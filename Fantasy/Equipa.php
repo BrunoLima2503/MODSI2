@@ -28,6 +28,16 @@
             background-color: #032383;
             color: white;
         }
+        .submit-button {
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #FFFF01;
+            color: black;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -40,7 +50,8 @@
         Equipa</div>
     <div class="Rectangle9" style="widsth: 330px; height: 588px; left: 15px; top: 191px; position: absolute; background: #D9D9D9">
     
-    <table id='ciclistasTable'>
+    <form method="post" action="processo_selacao.php"> <!-- Alterar esta parte da action -->
+        <table id='ciclistasTable'>
             <thead>
                 <tr>
                     <th>Nome do Ciclista</th>
@@ -83,7 +94,8 @@
                 ?>         
             </tbody>
         </table>
-
+        <button type="submit" class="submit-button">Submeter Seleção</button>
+    </form>
 
     </div>
 
@@ -106,8 +118,8 @@
         </div>
     </a>
 
-    <script>
-document.addEventListener("DOMContentLoaded", function() {
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
     // Inicializa os créditos
     let creditos = 3000;
     let n_players = 0;
