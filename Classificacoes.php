@@ -30,6 +30,8 @@
         }
     </style>
 </head>
+
+
 <body>
     <div class="Section15" style="width: 360px; height: 800px; background: #032383; position: relative;">
         <div class="Rectangle10"
@@ -102,7 +104,9 @@
                         die("Connection failed: " . $conn->connect_error);
                     }
 
-                        $sql = "SELECT * FROM Etapa_1"; 
+                    $sql = "SELECT Etapa_1.Posição_Etapa_1, Atleta.Nome, Etapa_1.Tempo 
+                            FROM Etapa_1
+                            JOIN Atleta ON Etapa_1.idAtleta = Atleta.id"; //Fazer o JOIN da tabela Atleta com a tabela Etapa_1 para mostrar o Atleta com o respetivo id na tabela da interface.
                         $result = $conn->query($sql);
 
                         if (!$result) {
@@ -113,60 +117,20 @@
                         while($row = $result->fetch_assoc()){
                             echo "<tr>
                                 <td>" . $row["Posição_Etapa_1"] . "</td>
-                                <td>" . $row["Atleta"] . "</td>
+                                <td>" . $row["Nome"] . "</td>
                                 <td>" . $row["Tempo"] . "</td>
                             </tr>";
                         }
 
                         $conn->close();
                         exit();
-                        //Colocar na base de dados na secção SQL por exemplo: INSERT INTO `Classificação_Geral` (Posição, Atleta, Tempo_Total_Etapas, Etapas) VALUES ('1', 'Zerafim', '23:39:29', 'etapa_value');
-                    
-                        $sql = "SELECT * FROM Etapa_2"; 
-                        $result = $conn->query($sql);
 
-                        if (!$result) {
-                            die("Invalid query: " . $conn->error);
-                        }
-
-                        //Read data of each row
-                        while($row = $result->fetch_assoc()){
-                            echo "<tr>
-                                <td>" . $row["Posição_Etapa_1"] . "</td>
-                                <td>" . $row["Atleta"] . "</td>
-                                <td>" . $row["Tempo"] . "</td>
-                            </tr>";
-                        }
-
-                        $conn->close();
-                        exit();
-                        //Colocar na base de dados na secção SQL por exemplo: INSERT INTO `Classificação_Geral` (Posição, Atleta, Tempo_Total_Etapas, Etapas) VALUES ('1', 'Zerafim', '23:39:29', 'etapa_value');
-                    
-
-                    
-                        // Código para exibir a classificação geral padrão
-                        $sql = "SELECT * FROM Classificação_Geral";
-                        $result = $conn->query($sql);
-                    
-                        if (!$result) {
-                            die("Invalid query: " . $conn->error);
-                        }
-                    
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<tr>
-                                    <td>" . $row["Posição"] . "</td>
-                                    <td>" . $row["Atleta"] . "</td>
-                                    <td>" . $row["Tempo_Total_Etapas"] . "</td>
-                                  </tr>";
-                        }
-                        $conn->close();
-                    
-                    
                     ?>
                     
                 </tbody>
             </table>
         </div>
+
         <a href="Interface Inicial.html" style="text-decoration: none;">
             <div class="ArrowCircle"
                 style="width: 34px; height: 34px; left: 11px; top: 10px; position: absolute; background: black; border-radius: 9999px">
