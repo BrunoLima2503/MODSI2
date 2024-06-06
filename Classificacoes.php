@@ -29,6 +29,18 @@
             color: white;
         }
     </style>
+        <script>
+        function showStage(stage) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'getStage.php?stage=' + stage, true);
+            xhr.onload = function () {
+                if (this.status == 200) {
+                    document.querySelector('tbody').innerHTML = this.responseText;
+                }
+            };
+            xhr.send();
+        }
+    </script>
 </head>
 
 
@@ -64,21 +76,22 @@
         <div class="Rectangle10"
             style="width: 360px; height: 39px; left: 0px; top: 228px; position: absolute; background: #D9D9D9"></div>
         <div class="Frame8" style="width: 630px; height: 22px; left: -56px; top: 238px; position: absolute">
-            <div class="Etapa1" id="Etapa1" onclick="showStage(1)"
+            <div class="Etapa1" id="Etapa1" onclick="showStage(0)"
                 style="width: 184px; height: 38px; left: 0px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
                 Etapa 1</div>
-            <div class="Etapa2" id="Etapa2" onclick="showStage(2)"
+            <div class="Etapa2" id="Etapa2" onclick="showStage(1)"
                 style="width: 184px; height: 38px; left: 71px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
                 Etapa 2</div>
-            <div class="Etapa3" id="Etapa3" onclick="showStage(3)"
+            <div class="Etapa3" id="Etapa3" onclick="showStage(2)"
                 style="width: 184px; height: 38px; left: 142px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
                 Etapa 3</div>
-            <div class="Etapa5" id="Etapa5" onclick="showStage(5)"
-                style="width: 184px; height: 38px; left: 284px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
-                Etapa 5</div>
-            <div class="Etapa4" id="Etapa4" onclick="showStage(4)"
+            <div class="Etapa4" id="Etapa4" onclick="showStage(3)"
                 style="width: 184px; height: 38px; left: 213px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
                 Etapa 4</div>
+            <div class="Etapa5" id="Etapa5" onclick="showStage(4)"
+                style="width: 184px; height: 38px; left: 284px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
+                Etapa 5</div>
+
         </div>
         <div class="Rectangle9">
             <table>
@@ -90,42 +103,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                    // Database connection
-                    $servername = 'ave.dee.isep.ipp.pt';
-                    $username = '1201034';
-                    $dbpassword = 'MWY2MzMxMDdiMWQ2';
-                    $dbname = '1201034';
-
-                    $conn = new mysqli($servername, $username, $dbpassword, $dbname);
-
-                    // Verifica a conexão
-                    if ($conn->connect_error) {
-                        die("Connection failed: " . $conn->connect_error);
-                    }
-
-                    $sql = "SELECT Etapa_1.Posição_Etapa_1, Atleta.Nome, Etapa_1.Tempo 
-                            FROM Etapa_1
-                            JOIN Atleta ON Etapa_1.idAtleta = Atleta.id"; //Fazer o JOIN da tabela Atleta com a tabela Etapa_1 para mostrar o Atleta com o respetivo id na tabela da interface.
-                        $result = $conn->query($sql);
-
-                        if (!$result) {
-                            die("Invalid query: " . $conn->error);
-                        }
-
-                        //Read data of each row
-                        while($row = $result->fetch_assoc()){
-                            echo "<tr>
-                                <td>" . $row["Posição_Etapa_1"] . "</td>
-                                <td>" . $row["Nome"] . "</td>
-                                <td>" . $row["Tempo"] . "</td>
-                            </tr>";
-                        }
-
-                        $conn->close();
-                        exit();
-
-                    ?>
+                <tr>
+                    <td colspan="3">Selecione uma etapa para visualizar os dados.</td>
+                </tr>
                     
                 </tbody>
             </table>
