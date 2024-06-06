@@ -28,8 +28,9 @@
             background-color: #032383;
             color: white;
         }
+
     </style>
-        <script>
+    <script>
         function showStage(stage) {
             var xhr = new XMLHttpRequest();
             xhr.open('GET', 'getStage.php?stage=' + stage, true);
@@ -40,6 +41,13 @@
             };
             xhr.send();
         }
+        
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('Etapa').addEventListener('click', function() {
+                showStage(1);
+            });
+        });
     </script>
 </head>
 
@@ -55,13 +63,16 @@
             style="width: 361px; height: 17px; left: 0px; top: 111px; position: absolute; text-align: center; color: white; font-size: 24px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
             Classificações</div>
         <div class="Etapa"
-            style="width: 90px; height: 31px; left: 15px; top: 150px; position: absolute; text-align: center; color: black; font-size: 20px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
+            style="width: 90px; height: 31px; left: 15px; top: 150px; position: absolute; text-align: center; color: black; font-size: 20px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;"
+            id="Etapa">
             Etapa</div>
         <div class="Geral"
-            style="width: 90px; height: 28px; left: 129px; top: 150px; position: absolute; text-align: center; color: black; font-size: 20px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
+            style="width: 90px; height: 28px; left: 129px; top: 150px; position: absolute; text-align: center; color: black; font-size: 20px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;"
+            id="Geral">
             Geral</div>
         <div class="Equipas"
-            style="width: 99px; height: 31px; left: 243px; top: 150px; position: absolute; text-align: center; color: black; font-size: 20px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
+            style="width: 99px; height: 31px; left: 243px; top: 150px; position: absolute; text-align: center; color: black; font-size: 20px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;"
+            id="Equipas">
             Equipas</div>
         <div class="Group8" style="width: 333px; height: 31.46px; left: 11px; top: 190px; position: absolute">
             <div class="Rectangle7"
@@ -77,19 +88,19 @@
             style="width: 360px; height: 39px; left: 0px; top: 228px; position: absolute; background: #D9D9D9"></div>
         <div class="Frame8" style="width: 630px; height: 22px; left: -56px; top: 238px; position: absolute">
             <div class="Etapa1" id="Etapa1" onclick="showStage(0)"
-                style="width: 184px; height: 38px; left: 0px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
+                style="width: 184px; height: 38px; left: 0px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;">
                 Etapa 1</div>
             <div class="Etapa2" id="Etapa2" onclick="showStage(1)"
-                style="width: 184px; height: 38px; left: 71px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
+                style="width: 184px; height: 38px; left: 71px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;">
                 Etapa 2</div>
             <div class="Etapa3" id="Etapa3" onclick="showStage(2)"
-                style="width: 184px; height: 38px; left: 142px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
+                style="width: 184px; height: 38px; left: 142px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;">
                 Etapa 3</div>
             <div class="Etapa4" id="Etapa4" onclick="showStage(3)"
-                style="width: 184px; height: 38px; left: 213px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
+                style="width: 184px; height: 38px; left: 213px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;">
                 Etapa 4</div>
             <div class="Etapa5" id="Etapa5" onclick="showStage(4)"
-                style="width: 184px; height: 38px; left: 284px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
+                style="width: 184px; height: 38px; left: 284px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;">
                 Etapa 5</div>
 
         </div>
@@ -104,7 +115,7 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td colspan="3">Selecione uma etapa para visualizar os dados.</td>
+                    <td colspan="3">Selecione o tipo de classificação.</td>
                 </tr>
                     
                 </tbody>
