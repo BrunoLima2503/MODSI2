@@ -72,15 +72,18 @@
                     die("Connection failed: " . $conn->connect_error);
                 }
                 
-                // Parte Adicionada: Captura e Sanitização da Entrada de Pesquisa
+                // Captura da Entrada de Pesquisa
                 $search = isset($_GET['search']) ? $_GET['search'] : '';
                 $search = $conn->real_escape_string($search);
 
 
-                $sql = "SELECT * FROM Lista_de_Saída"; //INSERT INTO `Lista_de_Saída` (Posição, Atleta, Equipa) VALUES ('1', 'Xavi', 'Nome da equipa');
-                
+                $sql = "SELECT Atleta.Nome, Atleta.Equipa
+                FROM Lista_de_Saída
+                JOIN Atleta ON Lista_de_Saída.idAtleta = Atleta.id
+                JOIN Equipa ON Lista_de_Saída.idEquipa = Equipa.id";
+
                 if (!empty($search)) {
-                    $sql .= " WHERE `Atleta` LIKE '%$search%'";
+                    $sql .= " WHERE `Nome` LIKE '%$search%'";
                 }
 
                 $result = $conn->query($sql);
@@ -92,7 +95,7 @@
                     //Read data of each row
                     while($row = $result->fetch_assoc()){
                         echo "<tr>
-                            <td>" . $row["Atleta"] . "</td>
+                            <td>" . $row["Nome"] . "</td>
                             <td>" . $row["Equipa"] . "</td>
                         </tr>";
                     }
