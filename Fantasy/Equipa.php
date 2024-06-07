@@ -94,7 +94,7 @@
                 ?>         
             </tbody>
         </table>
-        <button type="submit" class="submit-button">Submeter Seleção</button>
+        <button id= "Submit" type="submit" class="submit-button">Submeter Seleção</button>
     </form>
 
     </div>
@@ -108,7 +108,7 @@
         style="width: 158px; height: 32px; left: 202px; top: 151px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-weight: 700; word-wrap: break-word">
         Créditos: 3000</div>
     
-    <a href="../Fantasy.html" style="text-decoration: none;">
+    <a href="../Fantasy.php" style="text-decoration: none;">
         <div class="ArrowCircle"
             style="width: 34px; height: 34px; left: 11px; top: 10px; position: absolute; background: black; border-radius: 9999px">
         </div>
@@ -124,6 +124,7 @@
     let creditos = 3000;
     let n_players = 0;
     const creditosElement = document.getElementById("creditos");
+
 
     // Seleciona todas as linhas da tabela, exceto o cabeçalho
     const rows = document.querySelectorAll("#ciclistasTable tbody tr");
@@ -165,5 +166,17 @@
             creditosElement.innerText = `Créditos: ${creditos}`;
         });
     });
+
+    document.getElementById('Submit').addEventListener('click', function() {
+            //alert("Botão carregado!!");
+            const selectedCyclists = [];
+            rows.forEach(row => {
+                if (row.style.textDecoration === "underline") {
+                    selectedCyclists.push(row.cells[0].innerText);
+                }
+            });
+
+            });
+            //alert(selectedCyclists[0]);
 });
 </script>

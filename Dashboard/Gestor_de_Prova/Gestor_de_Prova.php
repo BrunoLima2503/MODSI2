@@ -187,6 +187,31 @@
                 style="width: 20px; height: 12px; left: 42px; top: 32px; position: absolute; transform: rotate(-180deg); transform-origin: 0 0"
                 src="../../Fotos/Arrow Vector 0.png" />
             </a>
+
+            <div id="arrowCircle" class="ArrowCircle" style="width: 34px; height: 34px; left: 11px; top: 10px; position: absolute; background: black; border-radius: 9999px"></div>
+            <img class="ArrowVector3" style="width: 20px; height: 12px; left: 38px; top: 33px; position: absolute; transform: rotate(-180deg); transform-origin: 0 0" src="../../Fotos/Arrow Vector 0.png" />
+            </div>
         </div>
+
+        <script>
+        function getCookie(name) {
+            let cookieArr = document.cookie.split(";");
+            for(let i = 0; i < cookieArr.length; i++) {
+                let cookiePair = cookieArr[i].split("=");
+                if(name == cookiePair[0].trim()) {
+                    return decodeURIComponent(cookiePair[1]);
+                }
+            }
+            return null;
+        }
+
+        document.getElementById('arrowCircle').addEventListener('click', function() {
+            $role = getCookie('Role');
+            if($role !== 0) //De acordo com o Role redireciona para a interface pretendida
+                window.location.href = "../../Interface Inicial role.php";
+            else 
+                window.location.href = "../../Interface Inicial.html";
+        });
+        </script>
     </body>
 </html>

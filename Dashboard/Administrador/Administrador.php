@@ -36,8 +36,38 @@
             text-align: center;
         }
 
+        .delete-button, .add-button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 4px;
+            cursor: pointer;
+        }
+        .add-button {
+            background-color: green;
+            margin-top: 10px;
+        }
+
     </style>
 
+        <script>
+            function deleteRow(row) {
+                row.parentNode.removeChild(row);
+            }
+
+            function addRow() {
+                var table = document.querySelector('tbody');
+                var newRow = document.createElement('tr');
+                newRow.innerHTML = `
+                    <td><input type='text' name='name_sign_up[]' value=''></td>
+                    <td><input type='text' name='email_sign_up[]' value=''></td>
+                    <td><input type='text' name='role[]' value=''></td>
+                    <td><button type='button' class='delete-button' onclick='deleteRow(this.parentNode.parentNode)'>Apagar</button></td>
+                    <input type='hidden' name='id[]' value=''>
+                `;
+                table.appendChild(newRow);
+            }
+        </script>
 
 
     </head>
@@ -65,12 +95,13 @@
 
             <form method="POST" action="update_admin.php">
             <div class="Rectangle9" style="width: 330px; height: 577px; left: 15px; top: 194px; position: absolute; background: #D9D9D9">
-            <table>
+            <table id="data-table">
                         <thead>
                             <tr>
                                 <th>Nome</th>
                                 <th>Email</th>
                                 <th>Role</th>
+                                <th>Ação</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -118,18 +149,45 @@
 
                         </tbody>
                     </table>
-                    <button onclick="submitChanges()">Submeter Alterações</button>
+                    <button type="button" class="add-button" onclick="addRow()">Adicionar Linha</button>
+                    <button type="submit" class="submit-button">Submeter Alterações</button>
+
+
             </div>
             </form>
             
-            <a href="../../Interface Inicial.html" style="text-decoration: none;">
+            <!--<a href="../../Interface Inicial.html" style="text-decoration: none;">
             <div class="ArrowCircle"
                 style="width: 34px; height: 34px; left: 15px; top: 9px; position: absolute; background: black; border-radius: 9999px">
             </div>
             <img class="ArrowVector3"
                 style="width: 20px; height: 12px; left: 42px; top: 32px; position: absolute; transform: rotate(-180deg); transform-origin: 0 0"
                 src="../../Fotos/Arrow Vector 0.png" />
-            </a>
+            </a>-->
+            <div id="arrowCircle" class="ArrowCircle" style="width: 34px; height: 34px; left: 11px; top: 10px; position: absolute; background: black; border-radius: 9999px"></div>
+            <img class="ArrowVector3" style="width: 20px; height: 12px; left: 38px; top: 33px; position: absolute; transform: rotate(-180deg); transform-origin: 0 0" src="../../Fotos/Arrow Vector 0.png" />
+            </div>
         </div>
+
+        <script>
+        function getCookie(name) {
+            let cookieArr = document.cookie.split(";");
+            for(let i = 0; i < cookieArr.length; i++) {
+                let cookiePair = cookieArr[i].split("=");
+                if(name == cookiePair[0].trim()) {
+                    return decodeURIComponent(cookiePair[1]);
+                }
+            }
+            return null;
+        }
+
+        document.getElementById('arrowCircle').addEventListener('click', function() {
+            $role = getCookie('Role');
+            if($role !== 0) //De acordo com o Role redireciona para a interface pretendida
+                window.location.href = "../../Interface Inicial role.php";
+            else 
+                window.location.href = "../../Interface Inicial.html";
+        });
+        </script>
     </body>
 </html>

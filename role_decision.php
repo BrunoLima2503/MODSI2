@@ -13,7 +13,7 @@
             header("Location: ./Dashboard/Gestor_de_Prova/Gestor_de_Prova.php");
             exit();
         } elseif ($role == 2){
-            header("Location: ./Dashboard/Gestor_da_Fantasy/Gestor_da_Fantasy.php");
+            header("Location: ./Dashboard/Gestor_da_Fantasy/Gestor_Fantasy.php");
             exit();
         } elseif ($role == 3){
             header("Location: ./Dashboard/Administrador/Administrador.php");

@@ -21,7 +21,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = $conn->real_escape_string($emails[$index]);
         $role = $conn->real_escape_string($roles[$index]);
 
-        $sql = "UPDATE registration_sign_up SET name_sign_up='$name', email_sign_up='$email', Role='$role' WHERE id=$id";
+        if (empty($id)) {
+            // Add new record
+            $sql = "INSERT INTO registration_sign_up (name_sign_up, email_sign_up, Role) VALUES ('$name', '$email', '$role')";
+        } else {
+            // Update existing record
+            $sql = "UPDATE registration_sign_up SET name_sign_up='$name', email_sign_up='$email', Role='$role' WHERE id=$id";
+        }
         $conn->query($sql);
     }
 

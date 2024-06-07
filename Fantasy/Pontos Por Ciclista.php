@@ -86,7 +86,7 @@
 
     </div>
     
-    <a href="../Fantasy.html" style="text-decoration: none;">
+    <a href="../Fantasy.php" style="text-decoration: none;">
         <div class="ArrowCircle"
             style="width: 34px; height: 34px; left: 11px; top: 10px; position: absolute; background: black; border-radius: 9999px">
         </div>
