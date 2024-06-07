@@ -7,6 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name_sign_up = $_POST['name_sign_up'];
     $email_sign_up = $_POST['email_sign_up'];
     $password_sign_up = $_POST['password_sign_up'];
+    $role = 0;
 
     // Verifica se email e password não estão vazios
     if (empty($name_sign_up) || empty($email_sign_up) || empty($password_sign_up)) {
@@ -26,12 +27,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($conn->connect_error) {
         die("Connection Failed : " . $conn->connect_error);
     } else {
-        $stmt = $conn->prepare("INSERT INTO registration_sign_up (name_sign_up, email_sign_up, password_sign_up) VALUES (?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO registration_sign_up (name_sign_up, email_sign_up, password_sign_up, Role) VALUES (?, ?, ?, ?)");
         if ($stmt === false) {
             die("Prepare failed: " . $conn->error);
         }
 
-        $stmt->bind_param("sss", $name_sign_up, $email_sign_up, $hashed_password); //sss é o número de parâmetros
+        $stmt->bind_param("ssss", $name_sign_up, $email_sign_up, $hashed_password, $role); //ssss é o número de parâmetros
         $execval = $stmt->execute();
 
         if ($execval) {

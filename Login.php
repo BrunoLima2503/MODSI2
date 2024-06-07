@@ -41,16 +41,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Usuário encontrado, verificar senha
             $row = $result->fetch_assoc();  // Obtém os dados do usuário
             $stored_password = $row['password_sign_up'];
+            $userid = $row['id'];
+            $role = $row['Role'];
             if (password_verify($password, $stored_password)) { // Verifica a senha
                 $_SESSION['loggedin'] = true;
                 $_SESSION['email'] = $email;
-                echo "<script>window.location.href = 'Interface Inicial.html'</script>";
+                // Nota: Por motivos de segurança não se deve guardar a password
+                $cookie = setcookie('userid', $userid, 'Role', $role, time() + (3600), "/"); // 3600 = 1h
+                if ($cookie){ //Valida se a cookie foi criada corretamente
+                    if ($role === 0)
+                        echo "<script>window.location.href = 'Interface Inicial.html'</script>"; //caso tenha role de utililador
+                    else echo "<script>window.location.href = 'Interface Inicial role.php'</script>"; //caso tenha um role especial (gestor)
+                }
             } else {
                 echo "<script>alert('Senha incorreta!'); window.location.href = 'Login.html'</script>";
             }
         } else {
             echo "<script>alert('Utilizador não encontrado!'); window.location.href = 'Login.html'</script>";
         }
+
+        
 
         $stmt->close();
         $conn->close();

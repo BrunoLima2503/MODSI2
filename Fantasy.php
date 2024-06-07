@@ -72,10 +72,5 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             src="Fotos/Arrow Vector 0.png" />
         </div>
     </a>
-
-
-
-    
-    <a href="logout.php">Logout</a> 
 </body>
 </html>
