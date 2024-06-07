@@ -86,21 +86,22 @@
         </div>
         <div class="Rectangle10"
             style="width: 360px; height: 39px; left: 0px; top: 228px; position: absolute; background: #D9D9D9"></div>
-        <div class="Frame8" style="width: 630px; height: 22px; left: -56px; top: 238px; position: absolute">
-            <div class="Etapa1" id="Etapa1" onclick="showStage(0)"
-                style="width: 184px; height: 38px; left: 0px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;">
+        
+        <div class="Frame12" style="width: 630px; height: 22px; left: -56px; top: 237px; position: absolute">
+            <div class="Etapa1" id="Etapa1" onclick="showStage(1)"
+                style="width: 64px; height: 38px; left: 62px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;">
                 Etapa 1</div>
-            <div class="Etapa2" id="Etapa2" onclick="showStage(1)"
-                style="width: 184px; height: 38px; left: 71px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;">
+            <div class="Etapa2" id="Etapa2" onclick="showStage(2)"
+                style="width: 66px; height: 38px; left: 130px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;">
                 Etapa 2</div>
-            <div class="Etapa3" id="Etapa3" onclick="showStage(2)"
-                style="width: 184px; height: 38px; left: 142px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;">
+            <div class="Etapa3" id="Etapa3" onclick="showStage(3)"
+                style="width: 66px; height: 38px; left: 200px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;">
                 Etapa 3</div>
-            <div class="Etapa4" id="Etapa4" onclick="showStage(3)"
-                style="width: 184px; height: 38px; left: 213px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;">
+            <div class="Etapa4" id="Etapa4" onclick="showStage(4)"
+                style="width: 71px; height: 38px; left: 270px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;">
                 Etapa 4</div>
-            <div class="Etapa5" id="Etapa5" onclick="showStage(4)"
-                style="width: 184px; height: 38px; left: 284px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;">
+            <div class="Etapa5" id="Etapa5" onclick="showStage(5)"
+                style="width: 69px; height: 38px; left: 341px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;">
                 Etapa 5</div>
 
         </div>
