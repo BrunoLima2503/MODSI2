@@ -91,6 +91,7 @@
                     <td><input type='text' value=''></td>
                     <td><input type='text' value=''></td>
                     <td><input type='text' value=''></td>
+                    <td><input type='text' value=''></td>
                     <td><button class='delete-button' onclick='deleteRow(this.parentNode.parentNode)'>Apagar</button></td>
                 `;
 
@@ -132,7 +133,7 @@
         <div class="Section25" style="width: 360px; height: 800px; background: #032383; position: relative;">
             <img class="Z3snnqskliwpnwjflqrqmsql2"
                 style="width: 360px; height: 143px; left: 0px; top: 0px; position: absolute; opacity: 0.80"
-                src="../Fotos/Banner.png" />
+                src="../../Fotos/Banner.png" />
             <div class="Frame13"
                 style="width: 361px; height: 17px; left: 0px; top: 111px; position: absolute; justify-content: center; align-items: center; display: inline-flex">
                 <div class="Dashboard"
@@ -180,13 +181,13 @@
                     <button onclick="submitChanges()">Submeter Alterações</button>
             </div>
             
-            <a href="Interface Inicial.html" style="text-decoration: none;">
+            <a href="../../Interface Inicial.html" style="text-decoration: none;">
             <div class="ArrowCircle"
                 style="width: 34px; height: 34px; left: 15px; top: 9px; position: absolute; background: black; border-radius: 9999px">
             </div>
             <img class="ArrowVector3"
                 style="width: 20px; height: 12px; left: 42px; top: 32px; position: absolute; transform: rotate(-180deg); transform-origin: 0 0"
-                src="../Fotos/Arrow Vector 0.png" />
+                src="../../Fotos/Arrow Vector 0.png" />
             </a>
         </div>
     </body>

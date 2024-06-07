@@ -46,33 +46,23 @@
         <div class="Section25" style="width: 360px; height: 800px; background: #032383; position: relative;">
             <img class="Z3snnqskliwpnwjflqrqmsql2"
                 style="width: 360px; height: 143px; left: 0px; top: 0px; position: absolute; opacity: 0.80"
-                src="../Fotos/Banner.png" />
+                src="../../Fotos/Banner.png" />
             <div class="Frame13"
                 style="width: 361px; height: 17px; left: 0px; top: 111px; position: absolute; justify-content: center; align-items: center; display: inline-flex">
                 <div class="Dashboard"
                     style="width: 361px; height: 17px; text-align: center; color: white; font-size: 24px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
                     Administrador</div>
             </div>
-            <div class="Rectangle10"
-                style="width: 360px; height: 39px; left: 0px; top: 143px; position: absolute; background: #D9D9D9"></div>
-            <div class="Frame12" style="width: 630px; height: 22px; left: -56px; top: 153px; position: absolute">
-                <div class="Etapa1" id="Etapa1" onclick="showStage(1)"
-                    style="width: 64px; height: 38px; left: 62px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;">
-                    Etapa 1</div>
-                <div class="Etapa2" id="Etapa1" onclick="showStage(2)"
-                    style="width: 66px; height: 38px; left: 130px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;">
-                    Etapa 2</div>
-                <div class="Etapa3" id="Etapa1" onclick="showStage(3)"
-                    style="width: 66px; height: 38px; left: 200px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;">
-                    Etapa 3</div>
-                <div class="Etapa4" id="Etapa1" onclick="showStage(4)"
-                    style="width: 71px; height: 38px; left: 270px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;">
-                    Etapa 4</div>
-                <div class="Etapa5" id="Etapa1" onclick="showStage(5)"
-                    style="width: 69px; height: 38px; left: 341px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;">
-                    Etapa 5</div>
 
-            </div>
+            <form method="GET" action="" class="Group11" style="width: 333px; height: 31.46px; left: 12px; top: 153px; position: absolute">
+                <div class="Rectangle7"
+                    style="width: 333px; height: 31.46px; left: 0px; top: 0px; position: absolute; background: #D9D9D9; border-radius: 23px">
+                </div>
+                <img class="Lupa1" style="width: 22.20px; height: 19.54px; left: 12.95px; top: 5.47px; position: absolute"
+                    src="../../Fotos/lupa 1.png" />
+                <input type="text" name="search" placeholder="Search" style="width: 250px; height: 15.63px; left: 35.15px; top: 7.82px; position: absolute; border: none; background: transparent;" value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
+            </form>
+
             <div class="Rectangle9" style="width: 330px; height: 577px; left: 15px; top: 194px; position: absolute; background: #D9D9D9">
             <table>
                         <thead>
@@ -83,21 +73,63 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td colspan="3">Ainda por definir.</td>
-                            </tr>
+
+                        <?php
+                        // Database connection
+                        $servername = 'ave.dee.isep.ipp.pt';
+                        $username = '1201034';
+                        $dbpassword = 'MWY2MzMxMDdiMWQ2';
+                        $dbname = '1201034';
+
+                        $conn = new mysqli($servername, $username, $dbpassword, $dbname);
+
+                        // Verifica a conexão
+                        if ($conn->connect_error) {
+                            die("Connection failed: " . $conn->connect_error);
+                        }
+                        
+                        // Captura da Entrada de Pesquisa
+                        $search = isset($_GET['search']) ? $_GET['search'] : '';
+                        $search = $conn->real_escape_string($search);
+
+
+                        $sql = "SELECT Atleta.Nome, Atleta.Equipa
+                        FROM Lista_de_Saída
+                        JOIN Atleta ON Lista_de_Saída.idAtleta = Atleta.id
+                        JOIN Equipa ON Lista_de_Saída.idEquipa = Equipa.id";
+
+                        if (!empty($search)) {
+                            $sql .= " WHERE `Nome` LIKE '%$search%'";
+                        }
+
+                        $result = $conn->query($sql);
+
+                            if (!$result) {
+                                die("Invalid query: " . $conn->error);
+                            }
+
+                            //Read data of each row
+                            while($row = $result->fetch_assoc()){
+                                echo "<tr>
+                                    <td>" . $row["name_sign_up"] . "</td>
+                                    <td>" . $row["email_sigh_up"] . "</td>
+                                    <td>" . $row["Role"] . "</td>
+                                </tr>";
+                            }
+                        ?>         
+
                         </tbody>
                     </table>
                     <button onclick="submitChanges()">Submeter Alterações</button>
             </div>
             
-            <a href="Interface Inicial.html" style="text-decoration: none;">
+            <a href="../../Interface Inicial.html" style="text-decoration: none;">
             <div class="ArrowCircle"
                 style="width: 34px; height: 34px; left: 15px; top: 9px; position: absolute; background: black; border-radius: 9999px">
             </div>
             <img class="ArrowVector3"
                 style="width: 20px; height: 12px; left: 42px; top: 32px; position: absolute; transform: rotate(-180deg); transform-origin: 0 0"
-                src="../Fotos/Arrow Vector 0.png" />
+                src="../../Fotos/Arrow Vector 0.png" />
             </a>
         </div>
     </body>
