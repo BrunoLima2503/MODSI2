@@ -93,13 +93,9 @@
                         $search = $conn->real_escape_string($search);
 
 
-                        $sql = "SELECT Atleta.Nome, Atleta.Equipa
-                        FROM Lista_de_Saída
-                        JOIN Atleta ON Lista_de_Saída.idAtleta = Atleta.id
-                        JOIN Equipa ON Lista_de_Saída.idEquipa = Equipa.id";
-
+                        $sql = "SELECT * FROM registration_sign_up";
                         if (!empty($search)) {
-                            $sql .= " WHERE `Nome` LIKE '%$search%'";
+                            $sql .= " WHERE `name_sign_up` LIKE '%$search%'";
                         }
 
                         $result = $conn->query($sql);
@@ -107,15 +103,16 @@
                             if (!$result) {
                                 die("Invalid query: " . $conn->error);
                             }
-
-                            //Read data of each row
-                            while($row = $result->fetch_assoc()){
-                                echo "<tr>
-                                    <td>" . $row["name_sign_up"] . "</td>
-                                    <td>" . $row["email_sigh_up"] . "</td>
-                                    <td>" . $row["Role"] . "</td>
-                                </tr>";
-                            }
+                            
+                        //Read data of each row
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>
+                                <td><input type='text' name='name_sign_up[]' value='" . $row["name_sign_up"] . "'></td>
+                                <td><input type='text' name='email_sign_up[]' value='" . $row["email_sign_up"] . "'></td>
+                                <td><input type='text' name='role[]' value='" . $row["Role"] . "'></td>
+                                <input type='hidden' name='id[]' value='" . $row["id"] . "'>
+                            </tr>";
+                        }
                         ?>         
 
                         </tbody>

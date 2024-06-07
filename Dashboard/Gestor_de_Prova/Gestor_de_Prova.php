@@ -52,7 +52,7 @@
         <script>
                 function showStage(stage) {
                     var xhr = new XMLHttpRequest();
-                    xhr.open('GET', 'Change database dashboard.php?stage=' + stage, true);
+                    xhr.open('GET', 'Change_database_dashboard.php?stage=' + stage, true);
                     xhr.onload = function () {
                         if (this.status == 200) {
                             document.querySelector('tbody').innerHTML = this.responseText;
@@ -91,7 +91,6 @@
                     <td><input type='text' value=''></td>
                     <td><input type='text' value=''></td>
                     <td><input type='text' value=''></td>
-                    <td><input type='text' value=''></td>
                     <td><button class='delete-button' onclick='deleteRow(this.parentNode.parentNode)'>Apagar</button></td>
                 `;
 
@@ -114,7 +113,7 @@
                     }
 
                     var xhr = new XMLHttpRequest();
-                    xhr.open('POST', 'Database update.php', true);
+                    xhr.open('POST', 'Database_update.php', true);
                     xhr.setRequestHeader('Content-Type', 'application/json');
                     xhr.onload = function () {
                         if (this.status == 200) {
@@ -167,7 +166,6 @@
                                 <th>Posição</th>
                                 <th>Nome do Ciclista</th>
                                 <th>Tempo Total Etapas</th>
-                                <th>Pontos</th>
                                 <th>Ação</th>
                             </tr>
                         </thead>

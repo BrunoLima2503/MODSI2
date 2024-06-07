@@ -52,7 +52,6 @@
                             <td><input type='text' value='" . $row["Posição_Etapa_$stage"] . "'></td>
                             <td><input type='text' value='" . $row["Nome"] . "'></td>
                             <td><input type='text' value='" . $row["Tempo"] . "'></td>
-                            <td><input type='text' value='" . $row["Pontos"] . "'></td>
                             <td><button onclick='deleteRow(this.parentNode.parentNode)'>Apagar</button></td>
                         </tr>";
                     }
