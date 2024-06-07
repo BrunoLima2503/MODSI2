@@ -13,8 +13,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 <body>
 <div class="Section16" style="width: 360px; height: 800px; background: #032383">
     <img class="Z3snnqskliwpnwjflqrqmsql2"
-        style="width: 360px; height: 143px; left: 0px; top: 0px; position: absolute; opacity: 0.80"
-        src="Fotos/Banner.png" />
+        style="width: 360px; height: 143px; left: 0px; top: 0px; position: relative; opacity: 0.80"
+        src="../../Fotos/Banner.png" />
     <div class="Fantasy"
         style="width: 361px; height: 17px; left: 0px; top: 111px; position: absolute; text-align: center; color: white; font-size: 24px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
         Gestor Fantasy</div>
@@ -57,13 +57,13 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <div class="Rectangle19"
         style="width: 21px; height: 657px; left: 339px; top: 143px; position: absolute; background: #CDC43D"></div>
     
-    <a href="Interface Inicial.html" style="text-decoration: none;">
+    <a href="../../Interface Inicial.html" style="text-decoration: none;">
         <div class="ArrowCircle"
             style="width: 34px; height: 34px; left: 11px; top: 10px; position: absolute; background: black; border-radius: 9999px">
         </div>
         <img class="ArrowVector3"
             style="width: 20px; height: 12px; left: 38px; top: 33px; position: absolute; transform: rotate(-180deg); transform-origin: 0 0"
-            src="Fotos/Arrow Vector 0.png" />
+            src="../../Fotos/Arrow Vector 0.png" />
         </div>
     </a>
 </body>

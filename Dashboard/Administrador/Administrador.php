@@ -63,6 +63,7 @@
                 <input type="text" name="search" placeholder="Search" style="width: 250px; height: 15.63px; left: 35.15px; top: 7.82px; position: absolute; border: none; background: transparent;" value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
             </form>
 
+            <form method="POST" action="update_admin.php">
             <div class="Rectangle9" style="width: 330px; height: 577px; left: 15px; top: 194px; position: absolute; background: #D9D9D9">
             <table>
                         <thead>
@@ -103,7 +104,7 @@
                             if (!$result) {
                                 die("Invalid query: " . $conn->error);
                             }
-                            
+
                         //Read data of each row
                         while ($row = $result->fetch_assoc()) {
                             echo "<tr>
@@ -119,6 +120,7 @@
                     </table>
                     <button onclick="submitChanges()">Submeter Alterações</button>
             </div>
+            </form>
             
             <a href="../../Interface Inicial.html" style="text-decoration: none;">
             <div class="ArrowCircle"
