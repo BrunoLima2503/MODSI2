@@ -48,6 +48,7 @@
                 showStage(1);
             });
         });
+
     </script>
 </head>
 

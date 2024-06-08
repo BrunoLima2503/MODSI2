@@ -40,17 +40,13 @@
         }
     </style>
 </head>
-
+<body>
 <div class="Section17" style="width: 360px; height: 800px; background: #032383; position: relative;">
-    <img class="Z3snnqskliwpnwjflqrqmsql2"
-        style="width: 360px; height: 143px; left: 0px; top: 0px; position: absolute; opacity: 0.80"
-        src="Fotos Fantasy/Banner.png" />
-    <div class="Equipa"
-        style="width: 361px; height: 17px; left: 0px; top: 111px; position: absolute; text-align: center; color: white; font-size: 24px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
-        Equipa</div>
+    <img class="Z3snnqskliwpnwjflqrqmsql2" style="width: 360px; height: 143px; left: 0px; top: 0px; position: absolute; opacity: 0.80" src="Fotos Fantasy/Banner.png" />
+    <div class="Equipa" style="width: 361px; height: 17px; left: 0px; top: 111px; position: absolute; text-align: center; color: white; font-size: 24px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">Equipa</div>
     <div class="Rectangle9" style="widsth: 330px; height: 588px; left: 15px; top: 191px; position: absolute; background: #D9D9D9">
     
-    <form method="post" action="processo_selacao.php"> <!-- Alterar esta parte da action -->
+    <form method="post" action="processo_selacao.php">
         <table id='ciclistasTable'>
             <thead>
                 <tr>
@@ -74,109 +70,166 @@
                     die("Connection failed: " . $conn->connect_error);
                 }
 
-
-                $sql = "SELECT * FROM Atleta"; //INSERT INTO `Lista_de_Saída` (Posição, Atleta, Equipa) VALUES ('1', 'Xavi', 'Nome da equipa');
+                $sql = "SELECT * FROM Atleta";
 
                 $result = $conn->query($sql);
 
-                    if (!$result) {
-                        die("Invalid query: " . $conn->error);
-                    }
+                if (!$result) {
+                    die("Invalid query: " . $conn->error);
+                }
 
-                    //Read data of each row
-                    while($row = $result->fetch_assoc()){
-                        echo "<tr>
-                            <td>" . $row["Nome"] . "</td>
-                            <td>" . $row["Equipa"] . "</td>
-                            <td>" . $row["Créditos"] . "</td>
-                        </tr>";
-                    }
+                // Read data of each row
+                while($row = $result->fetch_assoc()) {
+                    echo "<tr>
+                        <td>" . $row["Nome"] . "</td>
+                        <td>" . $row["Equipa"] . "</td>
+                        <td>" . $row["Créditos"] . "</td>
+                    </tr>";
+                }
                 ?>         
             </tbody>
         </table>
-        <button id= "Submit" type="submit" class="submit-button">Submeter Seleção</button>
+        <input type="hidden" name="selected_cyclists" id="selectedCyclists">
+        <button id="Submit" type="submit" class="submit-button">Submeter Seleção</button>
     </form>
 
     </div>
 
-    <div class="Rectangle7"
-        style="width: 360px; height: 35px; left: 0px; top: 143px; position: absolute; background: #D9D9D9"></div>
-    <div class="Escolhe5Ciclistas"
-        style="width: 220px; height: 34px; left: -16px; top: 151px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-weight: 700; word-wrap: break-word">
-        Escolhe 5 ciclistas</div>
-    <div id="creditos" class="CrDitos3000"
-        style="width: 158px; height: 32px; left: 202px; top: 151px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-weight: 700; word-wrap: break-word">
-        Créditos: 3000</div>
+    <div class="Rectangle7" style="width: 360px; height: 35px; left: 0px; top: 143px; position: absolute; background: #D9D9D9"></div>
+    <div class="Escolhe5Ciclistas" style="width: 220px; height: 34px; left: -16px; top: 151px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-weight: 700; word-wrap: break-word">Escolhe 5 ciclistas</div>
+    <div id="creditos" class="CrDitos3000" style="width: 158px; height: 32px; left: 202px; top: 151px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-weight: 700; word-wrap: break-word">Créditos: 3000</div>
     
     <a href="../Fantasy.php" style="text-decoration: none;">
-        <div class="ArrowCircle"
-            style="width: 34px; height: 34px; left: 11px; top: 10px; position: absolute; background: black; border-radius: 9999px">
-        </div>
-        <img class="ArrowVector3"
-            style="width: 20px; height: 12px; left: 38px; top: 33px; position: absolute; transform: rotate(-180deg); transform-origin: 0 0"
-            src="Fotos Fantasy/Arrow Vector 0.png" />
+        <div class="ArrowCircle" style="width: 34px; height: 34px; left: 11px; top: 10px; position: absolute; background: black; border-radius: 9999px"></div>
+        <img class="ArrowVector3" style="width: 20px; height: 12px; left: 38px; top: 33px; position: absolute; transform: rotate(-180deg); transform-origin: 0 0" src="Fotos Fantasy/Arrow Vector 0.png" />
         </div>
     </a>
+</div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-    // Inicializa os créditos
+document.addEventListener("DOMContentLoaded", function() {
     let creditos = 3000;
     let n_players = 0;
     const creditosElement = document.getElementById("creditos");
+    const selectedCyclistsInput = document.getElementById('selectedCyclists');
 
-
-    // Seleciona todas as linhas da tabela, exceto o cabeçalho
     const rows = document.querySelectorAll("#ciclistasTable tbody tr");
 
-    // Adiciona um evento de clique para cada linha
     rows.forEach(row => {
         row.addEventListener("click", function() {
-            const firstCell = row.cells[0]; // Seleciona a primeira célula da linha
-            const creditosCell = parseFloat(row.cells[2].innerText); // Obtém o valor dos créditos
-            
+            const firstCell = row.cells[0];
+            const creditosCell = parseFloat(row.cells[2].innerText);
 
-            // Verifica se a célula já está sublinhada
             if (row.style.textDecoration === "underline") {
-                n_players-=1;
-                // Remove o sublinhado
+                n_players -= 1;
                 row.style.textDecoration = "";
-                // Adiciona os créditos de volta
                 creditos += creditosCell;
             } else {
-                // Subtrai os créditos
                 creditos -= creditosCell;
                 n_players += 1;
-                if(n_players>5){
+                if (n_players > 5) {
                     n_players -= 1;
                     creditos += creditosCell;
                     alert("Não é permitido selecionar mais do que 5 ciclistas!");
-                }
-                else if (creditos<0){
+                } else if (creditos < 0) {
                     creditos += creditosCell;
                     alert("Número de créditos excedidos!");
-                }
-                else
-                    // Sublinha a célula
+                } else {
                     row.style.textDecoration = "underline";
-            } 
+                }
+            }
 
-
-            // Atualiza o texto dos créditos
             creditosElement.innerText = `Créditos: ${creditos}`;
+
+            const selectedCyclists = [];
+            rows.forEach(r => {
+                if (r.style.textDecoration === "underline") {
+                    selectedCyclists.push(r.cells[0].innerText);
+                }
+            });
+            selectedCyclistsInput.value = selectedCyclists.join(",");
         });
     });
-
-    document.getElementById('Submit').addEventListener('click', function() {
-            //alert("Botão carregado!!");
-            const selectedCyclists = [];
-            rows.forEach(row => {
-                if (row.style.textDecoration === "underline") {
-                    selectedCyclists.push(row.cells[0].innerText);
-                }
-            });
-
-            });
-            //alert(selectedCyclists[0]);
 });
 </script>
+</body>
+</html>
+
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (!empty($_POST['selected_cyclists'])) {
+        $selectedCyclists = explode(",", $_POST['selected_cyclists']);
+
+        // Database connection
+        $servername = 'ave.dee.isep.ipp.pt';
+        $username = '1201034';
+        $dbpassword = 'MWY2MzMxMDdiMWQ2';
+        $dbname = '1201034';
+
+        $conn = new mysqli($servername, $username, $dbpassword, $dbname);
+
+        // Verifica a conexão
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        $namePlaceholders = implode(',', array_fill(0, count($selectedCyclists), '?'));
+        $sql = "SELECT ID, Nome FROM Atleta WHERE Nome IN ($namePlaceholders)";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param(str_repeat('s', count($selectedCyclists)), ...$selectedCyclists);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $ids = [];
+        while ($row = $result->fetch_assoc()) {
+            $ids[$row['Nome']] = $row['ID'];
+        }
+
+        // Display IDs for demonstration purposes
+        foreach ($ids as $name => $id) {
+            echo "Cyclist: $name, ID: $id<br>";
+        }
+        } else {
+            echo "No cyclists selected.";
+        }
+
+        session_start();
+
+        // Verifica se o user fez log in e se a cookie foi criada
+        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+            if (isset($_COOKIE['userid'])) {
+                echo '<script>alert("Welcome, ' . htmlspecialchars($_COOKIE['userid'], ENT_QUOTES, 'UTF-8') . '");</script>';
+                //echo "Welcome, " . htmlspecialchars($_COOKIE['userid']) . "!";
+            } else {
+                echo "Cookie not set.";
+            }
+        } else {
+            header("Location: login.php");
+            exit();
+        }
+
+
+
+        //Prepare a new query to insert the selected team into the database
+        $stmt = $conn->prepare("INSERT INTO Fantasy Equipa (idAtleta_1, idAtleta_2, idAtleta_3, idAtleta_4, idAtleta_5, user_id) VALUES (?, ?, ?, ?, ?)");
+        if ($stmt === false) {
+            die("Prepare failed: " . $conn->error);
+        }
+
+        $stmt->bind_param("iiiiii", $ids[0], $ids[1], $ids[2], $ids[3], $ids[4], $userid); //iiiiii é o número de parâmetros neste caso do tipo inteiro
+        $execval = $stmt->execute();
+
+        if ($execval) {
+            echo "<script>window.location.href = 'Interface Inicial.html'</script>";
+        } else {
+            echo "Falha no registo: " . $stmt->error;
+        }
+
+        $stmt->close();
+        $conn->close();
+
+}
+?>
+

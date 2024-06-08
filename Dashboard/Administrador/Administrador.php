@@ -36,17 +36,14 @@
             text-align: center;
         }
 
-        .delete-button, .add-button {
+        .delete-button {
             background-color: red;
             color: white;
             border: none;
             padding: 4px;
             cursor: pointer;
         }
-        .add-button {
-            background-color: green;
-            margin-top: 10px;
-        }
+
 
     </style>
 
@@ -59,11 +56,12 @@
                 var table = document.querySelector('tbody');
                 var newRow = document.createElement('tr');
                 newRow.innerHTML = `
+                    <td><input type='text' name='id[]' value=''></td>
                     <td><input type='text' name='name_sign_up[]' value=''></td>
                     <td><input type='text' name='email_sign_up[]' value=''></td>
                     <td><input type='text' name='role[]' value=''></td>
-                    <td><button type='button' class='delete-button' onclick='deleteRow(this.parentNode.parentNode)'>Apagar</button></td>
-                    <input type='hidden' name='id[]' value=''>
+                    <td><button class='delete-button' onclick='deleteRow(this.parentNode.parentNode)'>Apagar</button></td>
+                    
                 `;
                 table.appendChild(newRow);
             }
@@ -98,6 +96,7 @@
             <table id="data-table">
                         <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>Nome</th>
                                 <th>Email</th>
                                 <th>Role</th>
@@ -139,20 +138,18 @@
                         //Read data of each row
                         while ($row = $result->fetch_assoc()) {
                             echo "<tr>
+                                <td><input type='text' name='id[]' value='" . $row["id"] . "'></td>
                                 <td><input type='text' name='name_sign_up[]' value='" . $row["name_sign_up"] . "'></td>
                                 <td><input type='text' name='email_sign_up[]' value='" . $row["email_sign_up"] . "'></td>
                                 <td><input type='text' name='role[]' value='" . $row["Role"] . "'></td>
-                                <input type='hidden' name='id[]' value='" . $row["id"] . "'>
+                                <td><button class='delete-button' onclick='deleteRow(this.parentNode.parentNode)'>Apagar</button></td>
                             </tr>";
                         }
                         ?>         
 
                         </tbody>
                     </table>
-                    <button type="button" class="add-button" onclick="addRow()">Adicionar Linha</button>
                     <button type="submit" class="submit-button">Submeter Alterações</button>
-
-
             </div>
             </form>
             
