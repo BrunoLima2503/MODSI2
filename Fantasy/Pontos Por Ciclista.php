@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pontos por Ciclista</title>
+    <link rel="stylesheet" href="../styles.css">
     <style>
         .Rectangle9 {
             width: 330px;

@@ -25,6 +25,7 @@ if ($data) {
         $sql = "UPDATE Atleta JOIN Etapa_$stage ON Atleta.id = Etapa_$stage.idAtleta
                 SET Etapa_$stage.Posição_Etapa_$stage = '$posicao', Atleta.Nome = '$nome', Etapa_$stage.Tempo = '$tempo'
                 WHERE Atleta.Nome = '$nome'";
+    
         
         if (!$conn->query($sql)) {
             die("Error updating record: " . $conn->error);
@@ -35,7 +36,6 @@ if ($data) {
     echo "No data received";
 }
 
-//Adicionar código para lidar com a inserção dos dados
 
 $conn->close();
 ?>

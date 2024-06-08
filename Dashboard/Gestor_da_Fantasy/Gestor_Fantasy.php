@@ -9,7 +9,13 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor Fantasy</title>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
 <body>
 <div class="Section16" style="width: 360px; height: 800px; background: #032383">
     <img class="Z3snnqskliwpnwjflqrqmsql2"

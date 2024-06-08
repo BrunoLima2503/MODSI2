@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Classificações</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
         .Rectangle9 {
             width: 330px;
@@ -33,7 +34,7 @@
     <script>
         function showStage(stage) {
             var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'getStage.php?stage=' + stage, true);
+            xhr.open('GET', 'getStage?stage=' + stage, true);
             xhr.onload = function () {
                 if (this.status == 200) {
                     document.querySelector('tbody').innerHTML = this.responseText;
@@ -46,6 +47,9 @@
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('Etapa').addEventListener('click', function() {
                 showStage(1);
+            });
+            document.getElementById('Geral').addEventListener('click', function() {
+                showStage('Geral');
             });
         });
 

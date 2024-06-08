@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Classificações</title>
+    <title>Gestor de Prova</title>
+    <link rel="stylesheet" href="../../styles.css">
     <style>
         .Rectangle9 {
             width: 330px;
@@ -83,19 +84,6 @@
                     row.parentNode.removeChild(row);
                 }
 
-                function addRow() {
-                var table = document.querySelector('tbody');
-                var newRow = document.createElement('tr');
-
-                newRow.innerHTML = `
-                    <td><input type='text' value=''></td>
-                    <td><input type='text' value=''></td>
-                    <td><input type='text' value=''></td>
-                    <td><button class='delete-button' onclick='deleteRow(this.parentNode.parentNode)'>Apagar</button></td>
-                `;
-
-                table.appendChild(newRow);
-                }
 
                 function submitChanges() {
                     var table = document.querySelector('tbody');
@@ -175,7 +163,6 @@
                             </tr>
                         </tbody>
                     </table>
-                    <button class="add-button" onclick="addRow()">Adicionar Linha</button>
                     <button onclick="submitChanges()">Submeter Alterações</button>
             </div>
             

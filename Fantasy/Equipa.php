@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Equipa</title>
+    <link rel="stylesheet" href="../styles.css">
     <style>
         .Rectangle9 {
             width: 330px;
@@ -44,7 +45,7 @@
 <div class="Section17" style="width: 360px; height: 800px; background: #032383; position: relative;">
     <img class="Z3snnqskliwpnwjflqrqmsql2" style="width: 360px; height: 143px; left: 0px; top: 0px; position: absolute; opacity: 0.80" src="Fotos Fantasy/Banner.png" />
     <div class="Equipa" style="width: 361px; height: 17px; left: 0px; top: 111px; position: absolute; text-align: center; color: white; font-size: 24px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">Equipa</div>
-    <div class="Rectangle9" style="widsth: 330px; height: 588px; left: 15px; top: 191px; position: absolute; background: #D9D9D9">
+    <div class="Rectangle9" style="width: 330px; height: 588px; left: 15px; top: 191px; position: absolute; background: #D9D9D9">
     
     <form method="post" action="processo_selacao.php">
         <table id='ciclistasTable'>
@@ -154,82 +155,3 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 </body>
 </html>
-
-
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (!empty($_POST['selected_cyclists'])) {
-        $selectedCyclists = explode(",", $_POST['selected_cyclists']);
-
-        // Database connection
-        $servername = 'ave.dee.isep.ipp.pt';
-        $username = '1201034';
-        $dbpassword = 'MWY2MzMxMDdiMWQ2';
-        $dbname = '1201034';
-
-        $conn = new mysqli($servername, $username, $dbpassword, $dbname);
-
-        // Verifica a conexão
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        $namePlaceholders = implode(',', array_fill(0, count($selectedCyclists), '?'));
-        $sql = "SELECT ID, Nome FROM Atleta WHERE Nome IN ($namePlaceholders)";
-
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param(str_repeat('s', count($selectedCyclists)), ...$selectedCyclists);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        $ids = [];
-        while ($row = $result->fetch_assoc()) {
-            $ids[$row['Nome']] = $row['ID'];
-        }
-
-        // Display IDs for demonstration purposes
-        foreach ($ids as $name => $id) {
-            echo "Cyclist: $name, ID: $id<br>";
-        }
-        } else {
-            echo "No cyclists selected.";
-        }
-
-        session_start();
-
-        // Verifica se o user fez log in e se a cookie foi criada
-        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-            if (isset($_COOKIE['userid'])) {
-                echo '<script>alert("Welcome, ' . htmlspecialchars($_COOKIE['userid'], ENT_QUOTES, 'UTF-8') . '");</script>';
-                //echo "Welcome, " . htmlspecialchars($_COOKIE['userid']) . "!";
-            } else {
-                echo "Cookie not set.";
-            }
-        } else {
-            header("Location: login.php");
-            exit();
-        }
-
-
-
-        //Prepare a new query to insert the selected team into the database
-        $stmt = $conn->prepare("INSERT INTO Fantasy Equipa (idAtleta_1, idAtleta_2, idAtleta_3, idAtleta_4, idAtleta_5, user_id) VALUES (?, ?, ?, ?, ?)");
-        if ($stmt === false) {
-            die("Prepare failed: " . $conn->error);
-        }
-
-        $stmt->bind_param("iiiiii", $ids[0], $ids[1], $ids[2], $ids[3], $ids[4], $userid); //iiiiii é o número de parâmetros neste caso do tipo inteiro
-        $execval = $stmt->execute();
-
-        if ($execval) {
-            echo "<script>window.location.href = 'Interface Inicial.html'</script>";
-        } else {
-            echo "Falha no registo: " . $stmt->error;
-        }
-
-        $stmt->close();
-        $conn->close();
-
-}
-?>
-

@@ -19,11 +19,8 @@
                                 FROM Etapa_$stage
                                 JOIN Atleta ON Etapa_$stage.idAtleta = Atleta.id";
                     } else if ($stage == 2) {
-                        $sql = "SELECT Etapa_$stage.Posição_Etapa_$stage, Atleta.Nome, Atleta.id AS idAtleta, Etapa_$stage.Tempo 
-                                FROM Etapa_$stage
-                                JOIN Atleta ON Etapa_$stage.idAtleta = Atleta.id";
-                        $sql = "SELECT Atleta.id AS idAtleta, Atleta.Nome, 
-                                SEC_TO_TIME(SUM(TIME_TO_SEC(Etapa_1.Tempo + Etapa_2.Tempo))) AS TempoTotal 
+                        $sql = "SELECT Atleta.id AS idAtleta, Atleta.Nome, Etapa_$stage.Posição_Etapa_$stage,
+                                SUM(Etapa_1.Tempo + Etapa_2.Tempo) AS TempoTotal 
                                 FROM Atleta
                                 LEFT JOIN Etapa_1 ON Atleta.id = Etapa_1.idAtleta
                                 LEFT JOIN Etapa_2 ON Atleta.id = Etapa_2.idAtleta
@@ -33,8 +30,8 @@
                         $sql = "SELECT Etapa_$stage.Posição_Etapa_$stage, Atleta.Nome, Atleta.id AS idAtleta, Etapa_$stage.Tempo 
                                 FROM Etapa_$stage
                                 JOIN Atleta ON Etapa_$stage.idAtleta = Atleta.id";
-                        $sql = "SELECT Atleta.id AS idAtleta, Atleta.Nome, 
-                                SEC_TO_TIME(SUM(TIME_TO_SEC(Etapa_1.Tempo + Etapa_2.Tempo + Etapa_3.Tempo))) AS TempoTotal 
+                        $sql = "SELECT Atleta.id AS idAtleta, Atleta.Nome, Etapa_$stage.Posição_Etapa_$stage ,
+                                SUM(Etapa_1.Tempo + Etapa_2.Tempo + Etapa_3.Tempo) AS TempoTotal 
                                 FROM Atleta
                                 LEFT JOIN Etapa_1 ON Atleta.id = Etapa_1.idAtleta
                                 LEFT JOIN Etapa_2 ON Atleta.id = Etapa_2.idAtleta
@@ -45,8 +42,8 @@
                         $sql = "SELECT Etapa_$stage.Posição_Etapa_$stage, Atleta.Nome, Atleta.id AS idAtleta, Etapa_$stage.Tempo 
                                 FROM Etapa_$stage
                                 JOIN Atleta ON Etapa_$stage.idAtleta = Atleta.id";
-                        $sql = "SELECT Atleta.id AS idAtleta, Atleta.Nome, 
-                                SEC_TO_TIME(SUM(TIME_TO_SEC(Etapa_1.Tempo + Etapa_2.Tempo + Etapa_3.Tempo + Etapa_4.Tempo))) AS TempoTotal 
+                        $sql = "SELECT Atleta.id AS idAtleta, Atleta.Nome, Etapa_$stage.Posição_Etapa_$stage,
+                                SUM(Etapa_1.Tempo + Etapa_2.Tempo + Etapa_3.Tempo + Etapa_4.Tempo) AS TempoTotal 
                                 FROM Atleta
                                 LEFT JOIN Etapa_1 ON Atleta.id = Etapa_1.idAtleta
                                 LEFT JOIN Etapa_2 ON Atleta.id = Etapa_2.idAtleta
@@ -58,8 +55,8 @@
                         $sql = "SELECT Etapa_$stage.Posição_Etapa_$stage, Atleta.Nome, Atleta.id AS idAtleta, Etapa_$stage.Tempo 
                                 FROM Etapa_$stage
                                 JOIN Atleta ON Etapa_$stage.idAtleta = Atleta.id";
-                        $sql = "SELECT Atleta.id AS idAtleta, Atleta.Nome, 
-                                SEC_TO_TIME(SUM(TIME_TO_SEC(Etapa_1.Tempo + Etapa_2.Tempo + Etapa_3.Tempo + Etapa_4.Tempo + Etapa_5.Tempo))) AS TempoTotal 
+                        $sql = "SELECT Atleta.id AS idAtleta, Atleta.Nome, Etapa_$stage.Posição_Etapa_$stage,
+                                SUM(Etapa_1.Tempo + Etapa_2.Tempo + Etapa_3.Tempo + Etapa_4.Tempo + Etapa_5.Tempo) AS TempoTotal 
                                 FROM Atleta
                                 LEFT JOIN Etapa_1 ON Atleta.id = Etapa_1.idAtleta
                                 LEFT JOIN Etapa_2 ON Atleta.id = Etapa_2.idAtleta
