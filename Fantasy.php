@@ -21,11 +21,10 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <div class="Rectangle7"
         style="width: 132px; height: 148px; left: 114px; top: 238px; position: absolute; background: #D9D9D9; border-radius: 23px">
     </div>
-    <a href="Fantasy/Equipa.php" style="text-decoration: none;">
-        <div class="EscolheATuaEquipa"
-            style="width: 86px; height: 43px; left: 138px; top: 293px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-weight: 500; word-wrap: break-word">
-            Escolhe a tua equipa</div>
-    </a>
+    <div id= "escolher_ver_equipa" class="EscolheATuaEquipa"
+        style="width: 86px; height: 43px; left: 138px; top: 293px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-weight: 500; word-wrap: break-word">
+        Escolhe a tua equipa</div>
+
         <div class="Rectangle8"
         style="width: 132px; height: 146px; left: 114px; top: 399px; position: absolute; background: #D9D9D9; border-radius: 23px">
     </div>
@@ -70,24 +69,46 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
 
     <script>
-        function getCookie(name) {
-            let cookieArr = document.cookie.split(";");
-            for(let i = 0; i < cookieArr.length; i++) {
-                let cookiePair = cookieArr[i].split("=");
-                if(name == cookiePair[0].trim()) {
-                    return decodeURIComponent(cookiePair[1]);
-                }
+    function getCookie(name) {
+        let cookieArr = document.cookie.split(";");
+        for(let i = 0; i < cookieArr.length; i++) {
+            let cookiePair = cookieArr[i].split("=");
+            if(name == cookiePair[0].trim()) {
+                return decodeURIComponent(cookiePair[1]);
             }
-            return null;
         }
+        return null;
+    }
 
-        document.getElementById('arrowCircle').addEventListener('click', function() {
-            $role = getCookie('Role');
-            if($role !== 0) //De acordo com o Role redireciona para a interface pretendida
-                window.location.href = "Interface Inicial role.php";
-            else 
-                window.location.href = "Interface Inicial.html";
-        });
-    </script>
+    document.getElementById('arrowCircle').addEventListener('click', function() {
+        let role = getCookie('Role');
+        if(role !== "0") //De acordo com o Role redireciona para a interface pretendida
+            window.location.href = "Interface Inicial role.php";
+        else 
+            window.location.href = "Interface Inicial.html";
+    });
+
+    document.getElementById('escolher_ver_equipa').addEventListener('click', function() {
+        let userid = getCookie('userid');
+
+        fetch('check_user_id.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'userid=' + encodeURIComponent(userid)
+        })
+        .then(response => response.text())
+        .then(data => {
+            if (data.trim() === "exists") {
+                window.location.href = "Fantasy/Equipa.php";
+            } else {
+                window.location.href = "Fantasy/Tua_Equipa.php";
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+</script>
+
 </body>
 </html>

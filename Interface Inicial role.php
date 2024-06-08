@@ -30,7 +30,6 @@
         <div class="Rectangle2"
           style="width: 137px; height: 148px; left: 23px; top: 559px; position: absolute; background: black; border-radius: 25px">
         </div>
-        <!--<a href="Fantasy.html" style="text-decoration: none;">-->
         <a href="Fantasy.php" style="text-decoration: none;">
           <div class="Fantasy"
             style="width: 97px; height: 32px; left: 218px; top: 407px; position: absolute; text-align: center; color: white; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">

@@ -63,8 +63,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         $conn->close();
-
-        echo "Selected cyclists have been stored successfully.";
+        
+        echo "<script>alert('Equipa submetida com sucesso!'); window.location.href = '../Fantasy.php'</script>";
     } else {
         echo "No cyclists selected.";
     }
