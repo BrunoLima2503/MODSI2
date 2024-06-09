@@ -44,7 +44,7 @@
 <body>
 <div class="Section17" style="width: 360px; height: 800px; background: #032383; position: relative;">
     <img class="Z3snnqskliwpnwjflqrqmsql2" style="width: 360px; height: 143px; left: 0px; top: 0px; position: absolute; opacity: 0.80" src="Fotos Fantasy/Banner.png" />
-    <div class="Equipa" style="width: 361px; height: 17px; left: 0px; top: 111px; position: absolute; text-align: center; color: white; font-size: 24px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">Equipa</div>
+    <div class="Equipa" style="width: 361px; height: 17px; left: 0px; top: 111px; position: absolute; text-align: center; color: white; font-size: 24px;  font-style: italic; font-weight: 700; word-wrap: break-word">Equipa</div>
     <div class="Rectangle9" style="width: 330px; height: 588px; left: 15px; top: 191px; position: absolute; background: #D9D9D9">
     
     <form method="post" action="processo_selacao.php">
@@ -97,8 +97,8 @@
     </div>
 
     <div class="Rectangle7" style="width: 360px; height: 35px; left: 0px; top: 143px; position: absolute; background: #D9D9D9"></div>
-    <div class="Escolhe5Ciclistas" style="width: 220px; height: 34px; left: -16px; top: 151px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-weight: 700; word-wrap: break-word">Escolhe 5 ciclistas</div>
-    <div id="creditos" class="CrDitos3000" style="width: 158px; height: 32px; left: 202px; top: 151px; position: absolute; text-align: center; color: black; font-size: 16px; font-family: Inter; font-weight: 700; word-wrap: break-word">Créditos: 3000</div>
+    <div class="Escolhe5Ciclistas" style="width: 220px; height: 34px; left: -16px; top: 151px; position: absolute; text-align: center; color: black; font-size: 16px;  font-weight: 700; word-wrap: break-word">Escolhe 5 ciclistas</div>
+    <div id="creditos" class="CrDitos3000" style="width: 158px; height: 32px; left: 202px; top: 151px; position: absolute; text-align: center; color: black; font-size: 16px;  font-weight: 700; word-wrap: break-word">Créditos: 3000</div>
     
     <a href="../Fantasy.php" style="text-decoration: none;">
         <div class="ArrowCircle" style="width: 34px; height: 34px; left: 11px; top: 10px; position: absolute; background: black; border-radius: 9999px"></div>

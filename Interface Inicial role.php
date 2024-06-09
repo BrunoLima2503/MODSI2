@@ -14,6 +14,13 @@
 
 <!DOCTYPE html>
 <html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interface Inicial</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
   <body>
     <div class="Section8" style="width: 360px; height: 800px; background: white">
         <div class="Rectangle5"
@@ -32,23 +39,23 @@
         </div>
         <a href="Fantasy.php" style="text-decoration: none;">
           <div class="Fantasy"
-            style="width: 97px; height: 32px; left: 218px; top: 407px; position: absolute; text-align: center; color: white; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
+            style="width: 97px; height: 32px; left: 218px; top: 407px; position: absolute; text-align: center; color: white; font-size: 16px;  font-style: italic; font-weight: 700; word-wrap: break-word">
             Fantasy</div>
         </a>
         <a href="Perfil da Etapa.html" style="text-decoration: none;">
           <div class="PerfilDaEtapa"
-            style="width: 137px; height: 31px; left: 23px; top: 618px; position: absolute; text-align: center; color: white; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
+            style="width: 137px; height: 31px; left: 23px; top: 618px; position: absolute; text-align: center; color: white; font-size: 16px;  font-style: italic; font-weight: 700; word-wrap: break-word">
             Perfil da etapa</div>
         </a>
         <a href="Lista de Saida.php" style="text-decoration: none;">
           <div class="ListaDeSaDa"
-            style="width: 137px; height: 31px; left: 199px; top: 618px; position: absolute; text-align: center; color: white; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
+            style="width: 137px; height: 31px; left: 199px; top: 618px; position: absolute; text-align: center; color: white; font-size: 16px;  font-style: italic; font-weight: 700; word-wrap: break-word">
             Lista de saída</div>
         </a>
       
         <a href="Classificacoes.php" style="text-decoration: none;">
           <div class="ClassicaEs"
-            style="width: 97px; height: 32px; left: 43px; top: 407px; position: absolute; text-align: center; color: white; font-size: 16px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
+            style="width: 97px; height: 32px; left: 43px; top: 407px; position: absolute; text-align: center; color: white; font-size: 16px;  font-style: italic; font-weight: 700; word-wrap: break-word">
             Classicações</div>
         </a>
       

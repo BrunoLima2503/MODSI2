@@ -39,7 +39,7 @@
     <div class="Frame19"
         style="width: 361px; height: 17px; left: 0px; top: 111px; position: absolute; justify-content: center; align-items: center; display: inline-flex">
         <div class="TuaEquipa"
-            style="width: 361px; height: 17px; text-align: center; color: white; font-size: 24px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
+            style="width: 361px; height: 17px; text-align: center; color: white; font-size: 24px;  font-style: italic; font-weight: 700; word-wrap: break-word">
             Tua Equipa</div>
     </div>
     <div class="Rectangle9" style="width: 330px; height: 614px; left: 15px; top: 157px; position: absolute; background: #D9D9D9">

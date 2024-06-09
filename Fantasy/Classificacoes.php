@@ -37,7 +37,7 @@
             style="width: 360px; height: 143px; left: 0px; top: 0px; position: absolute; opacity: 0.80"
             src="Fotos Fantasy/Banner.png" />
         <div class="ClassificaO"
-            style="width: 361px; height: 17px; left: 0px; top: 111px; position: absolute; text-align: center; color: white; font-size: 24px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
+            style="width: 361px; height: 17px; left: 0px; top: 111px; position: absolute; text-align: center; color: white; font-size: 24px;  font-style: italic; font-weight: 700; word-wrap: break-word">
             Classificação</div>
         <div class="Rectangle9" style="width: 330px; height: 619px; left: 15px; top: 160px; position: absolute; background: #D9D9D9">
         

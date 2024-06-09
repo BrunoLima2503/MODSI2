@@ -79,7 +79,7 @@
             <div class="Frame13"
                 style="width: 361px; height: 17px; left: 0px; top: 111px; position: absolute; justify-content: center; align-items: center; display: inline-flex">
                 <div class="Dashboard"
-                    style="width: 361px; height: 17px; text-align: center; color: white; font-size: 24px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
+                    style="width: 361px; height: 17px; text-align: center; color: white; font-size: 24px;  font-style: italic; font-weight: 700; word-wrap: break-word">
                     Administrador</div>
             </div>
 
