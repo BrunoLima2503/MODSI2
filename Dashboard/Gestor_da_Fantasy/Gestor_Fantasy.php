@@ -29,7 +29,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <div class="Rectangle8"
         style="width: 132px; height: 146px; left: 114px; top: 399px; position: absolute; background: #D9D9D9; border-radius: 23px">
     </div>
-    <a href="Fantasy/Classificacoes.php" style="text-decoration: none;">
+    <a href="../../Fantasy/Classificacoes.php" style="text-decoration: none;">
         <div class="ClassificaODosUtilizadores"
             style="width: 110px; height: 61px; left: 126px; top: 445px; position: absolute; text-align: center; color: black; font-size: 16px;  font-weight: 500; word-wrap: break-word">
             Classificação dos utilizadores</div>
@@ -37,7 +37,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         <div class="Rectangle9"
         style="width: 132px; height: 147px; left: 114px; top: 559px; position: absolute; background: #D9D9D9; border-radius: 23px">
     </div>
-    <a href="Fantasy/Pontos Por Ciclista.php" style="text-decoration: none;">
+    <a href="../../Fantasy/Pontos Por Ciclista.php" style="text-decoration: none;">
         <div class="PontosPorCiclista"
             style="width: 106px; height: 76px; left: 126px; top: 614px; position: absolute; text-align: center; color: black; font-size: 16px;  font-weight: 500; word-wrap: break-word">
             Pontos por ciclista</div>

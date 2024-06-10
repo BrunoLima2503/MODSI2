@@ -4,16 +4,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Classificações</title>
-    <link rel="stylesheet" href="styles.css">
     <style>
-        .Rectangle9 {
-            width: 330px;
-            height: 495px;
-            left: 15px;
-            top: 284px;
-            position: absolute;
+body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            min-height: 100vh;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            background: #032383;
+        }
+        .header {
+            width: 100%;
+            height: auto;
+            position: relative;
+        }
+        .header img {
+            width: 100%;
+            height: auto;
+            display: block;
+            opacity: 0.80;
+            border-radius: 10px;
+        }
+        .title {
+            text-align: center;
+            color: white;
+            font-size: 24px;
+            font-style: italic;
+            font-weight: 700;
+            word-wrap: break-word;
+            margin: 20px 0;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-around;
+            width: 90%;
+            max-width: 433px;
+            margin-bottom: 20px;
+        }
+        .button {
+            width: 90px;
+            padding: 5px;
+            text-align: center;
+            color: black;
+            font-size: 20px;
+            font-style: italic;
+            font-weight: 700;
             background: #D9D9D9;
+            border-radius: 23px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .button:hover {
+            background-color: gold;
+            color: white;
+            transform: scale(1.05);
+        }
+        .search-container {
+            width: 90%;
+            max-width: 333px;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .search-container input {
+            width: 100%;
+            padding: 8px 12px 8px 35px;
+            border: none;
+            border-radius: 23px;
+            background: #D9D9D9;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .search-container input:hover {
+            background-color: gold;
+            color: white;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
+        }
+        .search-container img {
+            position: absolute;
+            top: 50%;
+            left: 12px;
+            transform: translateY(-50%);
+        }
+        .table-container {
+            width: 90%;
+            max-width: 330px;
+            background: #D9D9D9;
+            border-radius: 10px;
             overflow: auto;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
         table {
             width: 100%;
@@ -29,12 +119,42 @@
             background-color: #032383;
             color: white;
         }
-
+        .back-button {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: black;
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .back-button:hover {
+            background-color: gold;
+            transform: scale(1.1);
+        }
+        .back-button img {
+            transform: rotate(-180deg);
+        }
+        @media (min-width: 768px) {
+            .table-container {
+                max-width: 1700px;
+            }
+            .header img {
+                height: 200px;
+                object-fit: cover;
+            }
+        }
     </style>
     <script>
-        function showStage(stage) { //To do: add parameter fo mode
+        function showStage(stage) {
             var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'geral?stage=' + stage, true); 
+            xhr.open('GET', 'getStage?stage=' + stage, true); 
             xhr.onload = function () {
                 if (this.status == 200) {
                     document.querySelector('tbody').innerHTML = this.responseText;
@@ -42,101 +162,34 @@
             };
             xhr.send();
         }
-        
 
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('Etapa').addEventListener('click', function() {
-                showStage('Etapa', 1);
+                showStage(1);
             });
             document.getElementById('Geral').addEventListener('click', function() {
-                showStage('Geral', 1);
+                showStage(1);
+            });
+            document.getElementById('Equipas').addEventListener('click', function() {
+                showStage(1);
+            });
+            document.getElementById('Etapa1').addEventListener('click', function() {
+                showStage(1);
+            });
+            document.getElementById('Etapa2').addEventListener('click', function() {
+                showStage(2);
+            });
+            document.getElementById('Etapa3').addEventListener('click', function() {
+                showStage(3);
+            });
+            document.getElementById('Etapa4').addEventListener('click', function() {
+                showStage(4);
+            });
+            document.getElementById('Etapa5').addEventListener('click', function() {
+                showStage(5);
             });
         });
 
-
-
-    </script>
-</head>
-
-
-<body>
-    <div class="Section15" style="width: 360px; height: 800px; background: #032383; position: relative;">
-        <div class="Rectangle10"
-            style="width: 360px; height: 42px; left: 0px; top: 143px; position: absolute; background: #D9D9D9"></div>
-        <img class="Z3snnqskliwpnwjflqrqmsql2"
-            style="width: 360px; height: 143px; left: 0px; top: 0px; position: absolute; opacity: 0.80"
-            src="Fotos/Banner.png" />
-        <div class="ClassificaEs"
-            style="width: 361px; height: 17px; left: 0px; top: 111px; position: absolute; text-align: center; color: white; font-size: 24px;  font-style: italic; font-weight: 700; word-wrap: break-word">
-            Classificações</div>
-        <div class="Etapa"
-            style="width: 90px; height: 31px; left: 15px; top: 150px; position: absolute; text-align: center; color: black; font-size: 20px;  font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;"
-            id="Etapa">
-            Etapa</div>
-        <div class="Geral"
-            style="width: 90px; height: 28px; left: 129px; top: 150px; position: absolute; text-align: center; color: black; font-size: 20px;  font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;"
-            id="Geral">
-            Geral</div>
-        <div class="Equipas"
-            style="width: 99px; height: 31px; left: 243px; top: 150px; position: absolute; text-align: center; color: black; font-size: 20px;  font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;"
-            id="Equipas">
-            Equipas</div>
-        <div class="Group8" style="width: 333px; height: 31.46px; left: 11px; top: 190px; position: absolute">
-            <div class="Rectangle7"
-                style="width: 333px; height: 31.46px; left: 0px; top: 0px; position: absolute; background: #D9D9D9; border-radius: 23px">
-            </div>
-            <img class="Lupa1" style="width: 22.20px; height: 19.54px; left: 12.95px; top: 5.47px; position: absolute"
-                src="Fotos/lupa 1.png" />
-            <div class="Search"
-                style="width: 73.07px; height: 15.63px; left: 35.15px; top: 7.82px; position: absolute; text-align: center; color: black; font-size: 16px;  font-weight: 100; word-wrap: break-word">
-                Search</div>
-        </div>
-        <div class="Rectangle10"
-            style="width: 360px; height: 39px; left: 0px; top: 228px; position: absolute; background: #D9D9D9"></div>
-        
-        <div class="Frame12" style="width: 630px; height: 22px; left: -56px; top: 237px; position: absolute">
-            <div class="Etapa1" id="Etapa1" onclick="showStage(1)"
-                style="width: 64px; height: 38px; left: 62px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px;  font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;">
-                Etapa 1</div>
-            <div class="Etapa2" id="Etapa2" onclick="showStage(2)"
-                style="width: 66px; height: 38px; left: 130px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px;  font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;">
-                Etapa 2</div>
-            <div class="Etapa3" id="Etapa3" onclick="showStage(3)"
-                style="width: 66px; height: 38px; left: 200px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px;  font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;">
-                Etapa 3</div>
-            <div class="Etapa4" id="Etapa4" onclick="showStage(4)"
-                style="width: 71px; height: 38px; left: 270px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px;  font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;">
-                Etapa 4</div>
-            <div class="Etapa5" id="Etapa5" onclick="showStage(5)"
-                style="width: 69px; height: 38px; left: 341px; top: 0px; position: absolute; text-align: center; color: black; font-size: 16px;  font-style: italic; font-weight: 700; word-wrap: break-word; cursor: pointer;">
-                Etapa 5</div>
-
-        </div>
-        <div class="Rectangle9">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Posição</th>
-                        <th>Nome do Ciclista</th>
-                        <th>Tempo Total Etapas</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td colspan="3">Selecione o tipo de classificação.</td>
-                </tr>
-                    
-                </tbody>
-            </table>
-        </div>
-
-
-    <div id="arrowCircle" class="ArrowCircle" style="width: 34px; height: 34px; left: 11px; top: 10px; position: absolute; background: black; border-radius: 9999px"></div>
-    <img class="ArrowVector3" style="width: 20px; height: 12px; left: 38px; top: 33px; position: absolute; transform: rotate(-180deg); transform-origin: 0 0" src="Fotos/Arrow Vector 0.png" />
-    </div>
-
-
-    <script>
         function getCookie(name) {
             let cookieArr = document.cookie.split(";");
             for(let i = 0; i < cookieArr.length; i++) {
@@ -153,10 +206,64 @@
             if($role !== 0) //De acordo com o Role redireciona para a interface pretendida
                 window.location.href = "Interface Inicial role.php";
             else 
-                window.location.href = "Interface Inicial.html"
+                window.location.href = "Interface Inicial.html";
         });
     </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="Fotos/Banner.png" alt="Banner">
+        </div>
+        <div class="title">Classificações</div>
+        <div class="button-container">
+            <div class="button" id="Etapa">Etapa</div>
+            <div class="button" id="Geral">Geral</div>
+            <div class="button" id="Equipas">Equipas</div>
+        </div>
+        <div class="button-container">
+            <div class="button" id="Etapa1">Etapa 1</div>
+            <div class="button" id="Etapa2">Etapa 2</div>
+            <div class="button" id="Etapa3">Etapa 3</div>
+            <div class="button" id="Etapa4">Etapa 4</div>
+            <div class="button" id="Etapa5">Etapa 5</div>
+        </div>
+        <div class="search-container">
+            <img src="Fotos/lupa 1.png" alt="Lupa">
+            <input type="text" name="search" placeholder="Search">
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Posição</th>
+                        <th>Nome do Ciclista</th>
+                        <th>Tempo Total Etapas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="3">Selecione o tipo de classificação.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="arrowCircle" class="back-button">
+            <img src="Fotos/Arrow Vector 0.png" alt="Back">
+        </div>
 
+        <script>
 
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.getElementById('arrowCircle').addEventListener('click', function() {
+                let role = getCookie('Role');
+                if(role !== "0") // De acordo com o Role redireciona para a interface pretendida
+                    window.location.href = "Interface Inicial role.php";
+                else 
+                    window.location.href = "Interface Inicial.html";
+            });
+        });
+    </script>
+    </div>
 </body>
 </html>

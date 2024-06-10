@@ -26,7 +26,6 @@ if ($data) {
                 SET Etapa_$stage.Posição_Etapa_$stage = '$posicao', Atleta.Nome = '$nome', Etapa_$stage.Tempo = '$tempo'
                 WHERE Atleta.Nome = '$nome'";
     
-        
         if (!$conn->query($sql)) {
             die("Error updating record: " . $conn->error);
         }
